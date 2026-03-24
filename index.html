@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>天秤AI — 4/1 すべてのAIサービスは過去になる</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Pixelify+Sans:wght@700&family=Rubik+Glitch&display=swap" rel="stylesheet">
+  <!-- Figma capture script (remove before production) -->
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    /* ============================================================
+       Variables
+       ============================================================ */
+    :root {
+      --blue:      #2563eb;
+      --blue-dark: #0b3d91;
+      --blue-mid:  #346dce;
+      --navy:      #102147;
+      --light:     #f8f9fa;
+      --cyan:      #00e5ff;
+      --yellow:    #fdf8a9;
+      --font: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* ============================================================
+       Reset
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); background: var(--light); color: #111; overflow-x: hidden; }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; }
+
+    /* ============================================================
+       Scroll reveal
+       ============================================================ */
+    .sr   { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .sr-l { opacity: 0; transform: translateX(-36px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .sr-r { opacity: 0; transform: translateX(36px);  transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .sr.in, .sr-l.in, .sr-r.in { opacity: 1; transform: none; }
+    .d1{transition-delay:.10s} .d2{transition-delay:.20s} .d3{transition-delay:.30s}
+    .d4{transition-delay:.40s} .d5{transition-delay:.50s} .d6{transition-delay:.60s}
+
+    /* ============================================================
+       Navigation — 1512×71 canvas scaled to viewport
+       ============================================================ */
+    .nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 200;
+      overflow: hidden;
+    }
+    .nav__canvas {
+      position: relative; width: 1512px; height: 71px;
+      transform-origin: top left;
+      background: rgba(255,255,255,0.95);
+      font-family: var(--font);
+    }
+
+    /* ============================================================
+       Hero — 1512×786 canvas scaled to viewport width
+       ============================================================ */
+    .hero {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    /* The canvas is always 1512×786px; JS scales it to fill the viewport */
+    .hero__canvas {
+      position: relative;
+      width: 1512px;
+      height: 786px;
+      transform-origin: top left;
+      background:
+        linear-gradient(180deg,
+          rgba(255,255,255,0.46) 0%,
+          rgba(200,213,255,0.46) 32.692%,
+          rgba(97,213,255,0.46) 100%),
+        #fff;
+      overflow: hidden;
+    }
+    /* All children use absolute px coords matching Figma exactly */
+    .hero__canvas * { font-family: var(--font); }
+
+    /* ============================================================
+       NEW / Announcement section — 1512×562 canvas, scaled
+       ============================================================ */
+    .new-section {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .new-section__canvas {
+      position: relative;
+      width: 1512px;
+      height: 562px;
+      transform-origin: top left;
+      background: var(--light);
+      overflow: hidden;
+      font-family: var(--font);
+    }
+    .btn-blue {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--blue); color: #fff;
+      font-size: 15px; font-weight: 700; letter-spacing: .03em;
+      padding: 14px 32px; border-radius: 8px; border: none;
+      cursor: pointer; transition: opacity .2s; text-decoration: none;
+    }
+    .btn-blue:hover { opacity: .88; }
+
+    /* ============================================================
+       VS section — 1512×620 canvas, scaled
+       ============================================================ */
+    .vs-section {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .vs-section__canvas {
+      position: relative;
+      width: 1512px;
+      height: 620px;
+      transform-origin: top left;
+      background: var(--light);
+      overflow: hidden;
+      font-family: var(--font);
+    }
+
+    /* ============================================================
+       EMO section — 1512×648 canvas, scaled
+       ============================================================ */
+    .emo-section {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .emo-section__canvas {
+      position: relative;
+      width: 1512px;
+      height: 648px;
+      transform-origin: top left;
+      background: #fff;
+      overflow: hidden;
+      font-family: var(--font);
+    }
+
+    /* ============================================================
+       ANGEL section — 1512×682 canvas scaled to viewport
+       ============================================================ */
+    .angel-section {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .angel-section__canvas {
+      position: relative; width: 1512px; height: 682px;
+      transform-origin: top left;
+      background: #2563eb;
+      font-family: var(--font);
+      overflow: hidden;
+    }
+
+    /* ============================================================
+       Transition — AND / そして
+       ============================================================ */
+    .transition-block {
+      background: var(--light);
+      text-align: center; padding: 60px 24px 20px;
+    }
+    .transition-block__arrow {
+      margin: 0 auto 16px; display: block;
+      height: 100px; width: auto;
+      transform: rotate(90deg);
+    }
+    .transition-block__and {
+      font-size: clamp(40px,4.43vw,67px); font-weight: 700;
+      color: var(--blue); letter-spacing: 5px; margin-bottom: 8px;
+    }
+    .transition-block__sosite {
+      font-size: clamp(60px,10vw,97px); font-weight: 700;
+      color: var(--blue); letter-spacing: -.05em;
+    }
+
+    .limit-heading {
+      padding: 40px 24px 60px;
+      text-align: center; background: var(--light);
+    }
+    .limit-heading__text {
+      font-size: clamp(24px,6.4vw,97px); font-weight: 700;
+      color: var(--blue); letter-spacing: -13px; line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       System unlock bar
+       ============================================================ */
+    .unlock-bar {
+      background: var(--navy);
+      text-align: center; padding: 32px 24px;
+    }
+    .unlock-bar__text {
+      font-family: "Pixelify Sans", monospace;
+      font-size: clamp(20px,3vw,40px); font-weight: 700;
+      color: var(--light); letter-spacing: .08em;
+      text-decoration: underline;
+    }
+
+    /* ============================================================
+       OMEGA section — unified scaled canvas 1512×2650
+       ============================================================ */
+    .omega-section {
+      position: relative; width: 100%; overflow: hidden;
+      background: #102147;
+    }
+    .omega-section__canvas {
+      position: relative; width: 1512px; height: 2650px; transform-origin: top left;
+    }
+
+
+    /* ============================================================
+       Price section
+       ============================================================ */
+    .price-section {
+      background-color: #eef2ff;
+      background-image:
+        linear-gradient(rgba(37,99,235,.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      padding: 80px 80px 100px;
+      position: relative; overflow: hidden;
+    }
+    .price-section__title-bg {
+      text-align: center;
+      font-size: clamp(80px,13vw,200px); font-weight: 700;
+      color: var(--blue); letter-spacing: -.04em;
+      line-height: .9; margin-bottom: 40px;
+      opacity: .05; pointer-events: none; user-select: none;
+      position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+      white-space: nowrap;
+    }
+    .price-section__inner {
+      position: relative; max-width: 1100px; margin: 0 auto;
+    }
+    .price-section__title {
+      text-align: center;
+      font-size: clamp(40px,5.5vw,72px); font-weight: 700;
+      color: var(--blue); letter-spacing: .04em;
+      margin-bottom: 0;
+    }
+    .price-section__title::after {
+      content: ''; display: block;
+      width: 36px; height: 3px;
+      background: #7c3aed;
+      border-radius: 2px;
+      margin: 12px auto 48px;
+    }
+    .price-main-box {
+      background: #fff;
+      border: none;
+      border-radius: 24px;
+      box-shadow: 0 8px 40px rgba(37,99,235,.14), 0 2px 8px rgba(0,0,0,.05);
+      padding: 48px 80px; max-width: 942px; margin: 0 auto 60px;
+    }
+    .price-grid {
+      display: flex; align-items: center; justify-content: center;
+      gap: 64px;
+    }
+    .price-grid__item {
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .price-grid__price-row {
+      display: flex; align-items: baseline; gap: 10px; margin: 0;
+    }
+    .price-grid__sep {
+      width: 1px; height: 72px;
+      background: rgba(37,99,235,.2);
+      flex-shrink: 0;
+    }
+    .price-grid__label {
+      font-size: clamp(18px,2.5vw,32px); font-weight: 700;
+      color: var(--blue); letter-spacing: .04em;
+    }
+    .price-grid__value {
+      font-size: clamp(28px,4vw,58px); font-weight: 700;
+      color: var(--blue); letter-spacing: .02em;
+    }
+    .price-grid__note {
+      display: inline-block;
+      background: #f59e0b; color: #fff;
+      font-size: clamp(12px,1.4vw,18px); font-weight: 700;
+      padding: 5px 22px; border-radius: 100px;
+      letter-spacing: .04em;
+    }
+    .price-section__options-title {
+      text-align: center; font-size: clamp(28px,4vw,60px);
+      font-weight: 700; color: var(--blue); letter-spacing: .04em; margin-bottom: 40px;
+    }
+    .price-options-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 28px; max-width: 1000px; margin: 0 auto;
+    }
+    .price-option {
+      background: #fff;
+      border: 1.5px solid rgba(37,99,235,.2);
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(37,99,235,.08);
+      padding: 40px 24px; text-align: center; min-height: 380px;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .price-option__name {
+      font-size: clamp(28px,3.5vw,52px); font-weight: 700;
+      color: var(--blue); letter-spacing: .04em; margin-bottom: 10px;
+    }
+    .price-option__full {
+      font-size: clamp(11px,1.2vw,18px); font-weight: 700;
+      color: var(--blue); letter-spacing: .06em; margin-bottom: 0;
+      white-space: nowrap;
+    }
+    .price-option__sep {
+      width: 100%; height: 1px;
+      background: rgba(37,99,235,.18);
+      margin: 18px 0;
+    }
+    .price-option__abbr {
+      font-size: clamp(12px,1.3vw,20px); font-weight: 700;
+      color: var(--blue); letter-spacing: .08em; line-height: 1.8;
+    }
+    .price-option__price {
+      font-size: clamp(16px,2vw,32px); font-weight: 700;
+      color: var(--blue); letter-spacing: .04em; margin-top: auto; padding-top: 20px;
+    }
+
+    /* ============================================================
+       SPECIAL / CTA
+       ============================================================ */
+    .special-section {
+      background: var(--light); padding: 60px 24px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .special-section__title {
+      font-size: clamp(50px,9vw,100px); font-weight: 700;
+      color: var(--blue); letter-spacing: -.04em; line-height: 1;
+      margin-bottom: 20px;
+    }
+
+    .cta-section {
+      background: var(--light); padding: 60px 24px;
+      text-align: center;
+    }
+    .cta-section__q {
+      font-size: clamp(30px,6vw,100px); font-weight: 700;
+      color: var(--blue); letter-spacing: -.04em; line-height: 1.2; margin-bottom: 20px;
+    }
+    .cta-section__a {
+      font-size: clamp(30px,6vw,100px); font-weight: 700;
+      color: var(--blue); letter-spacing: -.04em; line-height: 1.2;
+    }
+
+    .tenbin-end {
+      background: var(--light); text-align: center;
+      padding: 20px 24px 60px;
+      overflow: hidden;
+    }
+    .tenbin-end__text {
+      font-size: clamp(40px,12vw,200px); font-weight: 700;
+      color: var(--blue); letter-spacing: -.04em; line-height: .9;
+      white-space: nowrap;
+    }
+
+    /* ============================================================
+       Footer
+       ============================================================ */
+    .footer {
+      background: #fff; border-top: 1px solid rgba(0,0,0,.1);
+      padding: 36px 24px 28px; text-align: center;
+    }
+    .footer__logo {
+      font-size: 16px; font-weight: 700; color: #0a0a0a;
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-bottom: 20px;
+    }
+    .footer__logo-name { color: var(--blue); }
+    .footer__note {
+      font-size: 11px; font-weight: 700; color: var(--blue);
+      line-height: 1.9; margin-bottom: 10px;
+    }
+    .footer__copy {
+      font-size: 11px; font-weight: 700; color: var(--blue);
+    }
+
+    /* ============================================================
+       Noise transition canvases
+       ============================================================ */
+    .noise-top {
+      position: relative; width: 100%; overflow: hidden;
+      background: linear-gradient(180deg, #f8f9fa 0%, #102147 100%);
+    }
+    .noise-top__canvas {
+      position: relative; width: 1512px; height: 280px; transform-origin: top left;
+    }
+    .gradient-navy-solid {
+      height: 200px;
+      background: #102147;
+    }
+    .noise-bottom {
+      position: relative; width: 100%; overflow: hidden;
+      background: #102147;
+    }
+    .noise-bottom__canvas {
+      position: relative; width: 1512px; height: 270px; transform-origin: top left;
+    }
+
+    /* Bar grid decorations above OMEGA */
+    .block-grid {
+      background: var(--navy); padding: 40px 80px 0;
+      overflow: hidden;
+    }
+    .block-grid__row {
+      display: flex; gap: 12px; flex-wrap: nowrap;
+      justify-content: center; margin-bottom: 12px;
+    }
+    .block-grid__item {
+      width: 111px; height: 119px; border-radius: 4px; flex-shrink: 0;
+    }
+    .block-grid__item--navy   { background: var(--navy); opacity: .9; }
+    .block-grid__item--white  { background: #fff; opacity: .4; }
+    .block-grid__item--dark   { background: #484848; opacity: .4; }
+
+    /* ============================================================
+       Responsive
+       ============================================================ */
+    @media (max-width: 900px) {
+      .new-section { padding: 60px 24px 48px; }
+      .new-section__inner { flex-direction: column; }
+      .new-section__img { width: 100%; }
+      .vs-section { padding: 48px 24px; }
+      .vs-section__inner { grid-template-columns: 1fr; gap: 28px; }
+      .emo-section { padding: 48px 24px; }
+      .emo-section__inner { grid-template-columns: 1fr; gap: 28px; }
+      /* angel-section uses canvas scaling, no responsive override needed */
+      .price-section { padding: 60px 24px 80px; }
+      .price-options-grid { grid-template-columns: 1fr; }
+      .limit-heading__text { white-space: normal; font-size: clamp(22px,5vw,50px); }
+      .block-grid { display: none; }
+    }
+    @media (max-width: 600px) {
+      .price-main-box { padding: 28px 24px; }
+      .price-grid { flex-direction: column; gap: 28px; }
+      .price-grid__sep { width: 60px; height: 1px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       Navigation
+       ============================================================ -->
+  <nav class="nav" id="nav">
+    <div class="nav__canvas" id="navCanvas">
+      <!-- Logo (8053:1023) — combined icon + text + underline as single image -->
+      <img src="images/01b65565-2dbd-48ee-b555-c2ddc03c3b57.svg" alt="TenbinAI"
+           style="position:absolute;left:10px;top:8px;height:54px;width:auto;display:block;max-width:none;">
+
+      <!-- NEW button -->
+      <a href="#new-section" style="position:absolute;left:891px;top:12px;width:104px;height:44px;border:2px solid #2563eb;border-radius:2px;display:block;">
+        <span style="position:absolute;left:3px;top:3px;right:-6px;bottom:-5px;border:1px solid #2563eb;border-radius:2px;pointer-events:none;"></span>
+        <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#2563eb;letter-spacing:0.39px;">NEW</span>
+      </a>
+      <!-- OMEGA button -->
+      <a href="#omega" style="position:absolute;left:1033px;top:12px;width:104px;height:44px;border:2px solid #2563eb;border-radius:2px;display:block;">
+        <span style="position:absolute;left:3px;top:3px;right:-6px;bottom:-5px;border:1px solid #2563eb;border-radius:2px;pointer-events:none;"></span>
+        <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#2563eb;letter-spacing:0.39px;">OMEGA</span>
+      </a>
+      <!-- PRICE button -->
+      <a href="#price" style="position:absolute;left:1171px;top:12px;width:104px;height:44px;border:2px solid #2563eb;border-radius:2px;display:block;">
+        <span style="position:absolute;left:3px;top:3px;right:-6px;bottom:-5px;border:1px solid #2563eb;border-radius:2px;pointer-events:none;"></span>
+        <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#2563eb;letter-spacing:0.39px;">PRICE</span>
+      </a>
+      <!-- CONTACT button -->
+      <a href="#contact" style="position:absolute;left:1313px;top:12px;width:104px;height:44px;border:2px solid #2563eb;border-radius:2px;display:block;">
+        <span style="position:absolute;left:3px;top:3px;right:-6px;bottom:-5px;border:1px solid #2563eb;border-radius:2px;pointer-events:none;"></span>
+        <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#2563eb;letter-spacing:0.39px;">CONTACT</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       Hero — exact Figma canvas (1512×786), scaled by JS
+       ============================================================ -->
+  <section class="hero" id="top">
+    <div class="hero__canvas" id="heroCanvas">
+
+      <!-- ① Large ellipse top-right (8040:244) -->
+      <img src="images/e0c93445-e3e2-4fcb-a998-f25a4ed0ca5f.svg"
+           alt="" aria-hidden="true"
+           style="position:absolute;left:1080px;top:354px;width:778px;height:778px;display:block;max-width:none;pointer-events:none;">
+
+      <!-- ② Decorative cyan squares (left cluster) -->
+      <div aria-hidden="true" style="pointer-events:none;">
+        <!-- 91×91 squares -->
+        <div style="position:absolute;left:314px;top:423px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:420px;top:261px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:506px;top:435px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:612px;top:273px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:260px;top:608px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:372px;top:658px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:366px;top:446px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:272px;top:416px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:378px;top:254px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <!-- 65×65 squares -->
+        <div style="position:absolute;left:82px;top:416px;width:65px;height:65px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:188px;top:254px;width:65px;height:65px;background:#aaeaff;opacity:.5;"></div>
+        <!-- 62×61 rectangles -->
+        <div style="position:absolute;left:416px;top:373px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:522px;top:211px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:160px;top:362px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:266px;top:200px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:210px;top:536px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:316px;top:374px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:445px;top:510px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:551px;top:348px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:347px;top:507px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:453px;top:345px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
+      </div>
+
+      <!-- ③ Blue vertical bars -->
+      <div aria-hidden="true" style="pointer-events:none;">
+        <div style="position:absolute;left:126px;top:622px;width:6px;height:475px;background:#2563eb;"></div>
+        <div style="position:absolute;left:295px;top:669px;width:6px;height:475px;background:#2563eb;"></div>
+        <div style="position:absolute;left:563px;top:580px;width:6px;height:475px;background:#2563eb;"></div>
+        <div style="position:absolute;left:705px;top:660px;width:6px;height:475px;background:#2563eb;"></div>
+        <div style="position:absolute;left:992px;top:105px;width:6px;height:203px;background:#2563eb;"></div>
+        <div style="position:absolute;left:1203px;top:71px;width:6px;height:475px;background:#2563eb;"></div>
+        <div style="position:absolute;left:1330px;top:467px;width:6px;height:475px;background:#2563eb;"></div>
+      </div>
+
+      <!-- ④ Logo / Union (8053:1107): left:88 top:152 w:205 h:132 -->
+      <img src="images/1e0715c6-5807-4bc8-a608-9df0aae8ca61.svg"
+           alt="天秤AI" aria-hidden="true"
+           style="position:absolute;left:88px;top:152px;width:205px;height:132px;display:block;max-width:none;pointer-events:none;">
+
+      <!-- ⑤ TenbinAI wordmark (8053:884): left:338 top:312 w:836.836 h:162.77 -->
+      <img src="images/acb50060-f78b-4d9d-88d0-7676ff96ada5.svg"
+           alt="Tenbin AI" aria-hidden="true"
+           style="position:absolute;left:338px;top:312px;width:837px;height:163px;display:block;max-width:none;pointer-events:none;">
+
+      <!-- ⑦ White semi-transparent UI overlay boxes -->
+      <div aria-hidden="true" style="pointer-events:none;">
+        <div style="position:absolute;left:581px;top:557px;width:371px;height:68px;background:#fff;border:4px solid #fff;border-radius:8px;opacity:.4;"></div>
+        <div style="position:absolute;left:914px;top:549px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
+        <div style="position:absolute;left:936px;top:541px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
+        <div style="position:absolute;left:949px;top:555px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
+        <div style="position:absolute;left:566px;top:610px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
+        <div style="position:absolute;left:581px;top:619px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
+      </div>
+
+      <!-- ⑧ Main copy (7993:1797): container left:38 top:71 -->
+      <!-- Line 1: 4/1すべてのAIサービスは — canvas left:94 top:71 50px #123279 -->
+      <p style="position:absolute;left:94px;top:71px;font-size:50px;font-weight:700;color:#123279;line-height:80.5px;white-space:nowrap;pointer-events:none;">4/1すべてのAIサービスは</p>
+      <!-- Line 2a: 過去 — canvas left:129 top:179 59px white -->
+      <p style="position:absolute;left:129px;top:179px;font-size:59px;font-weight:700;color:#fff;line-height:80.5px;white-space:nowrap;pointer-events:none;">過去</p>
+      <!-- Line 2b: になる。— canvas left:282 top:179 49px #123279 -->
+      <p style="position:absolute;left:282px;top:179px;font-size:49px;font-weight:700;color:#123279;line-height:80.5px;white-space:nowrap;pointer-events:none;">になる。</p>
+
+      <!-- ⑨ 天秤 AI NEXT PROJECT (7995:2409): left:608 top:553 30px #0b3d91 -->
+      <p style="position:absolute;left:608px;top:553px;font-size:30px;font-weight:700;color:#0b3d91;line-height:80.5px;white-space:nowrap;pointer-events:none;">天秤 AI NEXT PROJECT</p>
+
+      <!-- ⑩ Right English descriptions (7993:1805 / 7995:2404 / 7995:2406) -->
+      <p style="position:absolute;left:915px;top:666px;font-size:18px;font-weight:700;color:#2563eb;line-height:33.3px;white-space:nowrap;-webkit-text-stroke:1px #fff;paint-order:stroke fill;pointer-events:none;">You don't need judgement</p>
+      <p style="position:absolute;left:915px;top:700px;font-size:18px;font-weight:700;color:#2563eb;line-height:33.3px;white-space:nowrap;-webkit-text-stroke:1px #fff;paint-order:stroke fill;pointer-events:none;">Your job progress is more accellarte with emotion</p>
+      <p style="position:absolute;left:915px;top:736px;font-size:18px;font-weight:700;color:#2563eb;line-height:33.3px;white-space:nowrap;-webkit-text-stroke:1px #fff;paint-order:stroke fill;pointer-events:none;">Your working with AI go to Infinity</p>
+
+      <!-- ⑬ SCROLL indicator (left:734 top:699) -->
+      <div aria-hidden="true"
+           style="position:absolute;left:734px;top:699px;width:44px;height:59px;display:flex;flex-direction:column;align-items:center;gap:8px;">
+        <div style="width:1px;height:36px;background:rgba(0,0,0,.2);margin-left:1px;"></div>
+        <span style="font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#2563eb;">SCROLL</span>
+      </div>
+
+    </div><!-- /.hero__canvas -->
+  </section>
+
+  <!-- ============================================================
+       NEW / Announcement — exact Figma canvas (1512×562), scaled by JS
+       ============================================================ -->
+  <section class="new-section" id="new-section">
+    <div class="new-section__canvas" id="newCanvas">
+
+      <!-- "NEW" large decorative text: left:-12, top:-16, 147px, #2563eb, tracking:-8px -->
+      <p aria-hidden="true"
+         style="position:absolute;left:-12px;top:-16px;
+                font-size:147px;font-weight:700;color:#2563eb;
+                letter-spacing:-8px;line-height:200px;
+                white-space:nowrap;pointer-events:none;user-select:none;">NEW</p>
+
+      <!-- Product image: left:795(=111+684), top:167(=183.52-16.52), w:561, h:338 -->
+      <img src="images/b5031c18-3bd7-4dcd-8811-eab4f24589bf.png"
+           alt="新機能イメージ"
+           style="position:absolute;left:795px;top:167px;width:561px;height:338px;
+                  object-fit:cover;pointer-events:none;">
+
+      <!-- ANNOUNCEMENT label: cyan line at (135,190), text at (189,184) -->
+      <div style="position:absolute;left:135px;top:190px;
+                  width:40px;height:4px;background:#00e5ff;border-radius:2px;"></div>
+      <p style="position:absolute;left:189px;top:184px;
+                font-size:10px;font-weight:700;color:#2563eb;
+                letter-spacing:2px;text-transform:uppercase;
+                line-height:17px;white-space:nowrap;">ANNOUNCEMENT — 4.01.2025</p>
+
+      <!-- 比較するだけじゃない。: left:128(=111+17), top:212(=183.52+28.52), 44px, #0b3d91 -->
+      <p style="position:absolute;left:128px;top:212px;
+                font-size:44px;font-weight:700;color:#0b3d91;
+                line-height:57.2px;white-space:nowrap;">比較するだけじゃない。</p>
+
+      <!-- 天秤AIはさらに進化する: left:128, top:269(=183.52+91.52-5.5), 44px, #0b3d91 -->
+      <p style="position:absolute;left:128px;top:270px;
+                font-size:44px;font-weight:700;color:#0b3d91;
+                line-height:57.2px;white-space:nowrap;">天秤AIはさらに進化する</p>
+
+      <!-- Description line 1: left:135(=111+24), top:373(=183.52+191.38-2), 17px, #2563eb -->
+      <p style="position:absolute;left:135px;top:373px;
+                font-size:17px;font-weight:700;color:#2563eb;
+                line-height:33.15px;white-space:nowrap;">さまざまなモデルの生成結果を比較、検討するサービスにとどまらず、</p>
+
+      <!-- Description line 2: top:373+31.15=404px -->
+      <p style="position:absolute;left:135px;top:404px;
+                font-size:17px;font-weight:700;color:#2563eb;
+                line-height:33.15px;white-space:nowrap;">さらにAI業務を加速、より使いやすくするためのシステムをリリースしました。</p>
+
+    </div><!-- /.new-section__canvas -->
+  </section>
+
+  <!-- ============================================================
+       VS section — exact Figma canvas (1512×620), scaled by JS
+       ============================================================ -->
+  <section class="vs-section" id="vs">
+    <div class="vs-section__canvas" id="vsCanvas">
+
+      <!-- Blue area (586px tall, same width) -->
+      <div style="position:absolute;left:0;top:0;width:1512px;height:586px;background:#2563eb;overflow:hidden;">
+
+        <!-- White card: left:92, top:161.63, w:518, h:406, rounded:14, shadow -->
+        <div style="position:absolute;left:92px;top:161.63px;width:518px;height:406px;
+                    background:#fff;border-radius:14px;
+                    box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);"></div>
+
+        <!-- Badge group: left:88, top:43.63, w:340, h:85 -->
+
+        <!-- "新機能 - 01": top=43.63+0=43.63, left=88+24=112, white 14px -->
+        <p style="position:absolute;left:112px;top:43.63px;
+                  font-size:14px;font-weight:700;color:#fff;
+                  line-height:23.8px;white-space:nowrap;">新機能 - 01</p>
+
+        <!-- Separator line 39: left=88+4=92, top=43.63+14=57.63, w=12px, h=1px -->
+        <div style="position:absolute;left:92px;top:57.63px;width:12px;height:1px;background:#fff;"></div>
+        <!-- Separator line 40: left=88+102=190, top=57.63, w=13px, h=1px -->
+        <div style="position:absolute;left:190px;top:57.63px;width:13px;height:1px;background:#fff;"></div>
+
+        <!-- White bg rect: top=43.63+26=69.63, left=88+0=88, w=336px(340-4), h=54px(85-26-5), rounded:8 -->
+        <div style="position:absolute;left:88px;top:69.63px;width:336px;height:54px;
+                    background:#fff;border-radius:8px;"></div>
+        <!-- Border overlay: top=43.63+31=74.63, left=88+4=92, w=336, h=54, 1px white border -->
+        <div style="position:absolute;left:92px;top:74.63px;width:336px;height:54px;
+                    border:1px solid rgba(255,255,255,0.9);border-radius:8px;pointer-events:none;"></div>
+
+        <!-- "VS  バーサスシステム": top=43.63+41=84.63, left=88+22=110, 30px #2563eb font-black -->
+        <p style="position:absolute;left:110px;top:69.63px;
+                  font-size:30px;font-weight:900;color:#2563eb;
+                  line-height:54px;white-space:pre;">VS  バーサスシステム</p>
+
+        <!-- Title: left:111, top:172.63 -->
+        <!-- "生成結果" 30px + "を" 20px inline, then "比べる手間はいらない" 20px -->
+        <p style="position:absolute;left:111px;top:172.63px;
+                  font-size:30px;font-weight:700;color:#2563eb;
+                  line-height:1.4;letter-spacing:1px;white-space:nowrap;"><span>生成結果</span><span style="font-size:20px;">を</span></p>
+        <p style="position:absolute;left:111px;top:214px;
+                  font-size:20px;font-weight:700;color:#2563eb;
+                  line-height:1.4;letter-spacing:1px;white-space:nowrap;">比べる手間はいらない</p>
+
+        <!-- Description: left:111, top:266.63 -->
+        <p style="position:absolute;left:111px;top:266.63px;
+                  font-size:16px;font-weight:700;color:#2563eb;
+                  line-height:normal;letter-spacing:1px;white-space:nowrap;">プロンプトで結果を出力後、各生成結果が自らお互いに戦い、</p>
+        <p style="position:absolute;left:111px;top:290px;
+                  font-size:16px;font-weight:700;color:#2563eb;
+                  line-height:normal;letter-spacing:1px;white-space:nowrap;">自動で最も強く正確な生成結果がピックアップされます。</p>
+
+        <!-- VS swords icon (img1): centered in card (card left:89 w:607 → center at 392.5, icon w:282 → left:252) -->
+        <img src="images/b9791103-8dd1-4199-998b-a4f79e11c7b3.svg"
+             alt="" aria-hidden="true"
+             style="position:absolute;left:252px;top:369px;width:282px;height:140px;
+                    object-fit:contain;pointer-events:none;">
+
+        <!-- Large image (imgRectangle162): left:943, top:220, w:480, h:313, rounded:14 -->
+        <img src="images/55da4f47-424f-4c93-b6dc-98bb379e1dbb.png"
+             alt="バーサスシステムイメージ"
+             style="position:absolute;left:943px;top:220px;width:480px;height:313px;
+                    object-fit:cover;border-radius:14px;
+                    box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);">
+
+        <!-- Square image (imgRectangle229): left:682, top:305, size:210, rounded:8 -->
+        <img src="images/7616f81c-3752-4307-bc10-547c175f853d.png"
+             alt=""
+             style="position:absolute;left:682px;top:305px;width:210px;height:210px;
+                    object-fit:cover;border-radius:8px;">
+
+        <!-- "VS" large deco text image (imgVs):
+             container left:1251.38, top:-39.5 → imgVs inside at left:-39.68, top:38.09
+             → absolute: left=1211.7, top=-1.4, w:296.8, h:199.68 -->
+        <img src="images/d63fa4c7-bd9c-4a28-b916-178e44e68e5f.svg"
+             alt="" aria-hidden="true"
+             style="position:absolute;left:1212px;top:-1px;width:297px;height:200px;
+                    object-fit:contain;pointer-events:none;">
+
+      </div><!-- /blue area -->
+
+    </div><!-- /.vs-section__canvas -->
+  </section>
+
+  <!-- ============================================================
+       EMO section — exact Figma canvas (1512×648), scaled by JS
+       ============================================================ -->
+  <section class="emo-section" id="emo">
+    <div class="emo-section__canvas" id="emoCanvas">
+
+      <!-- "EMO" large deco text: left:-23, top:-53(=-74+21), 227px, #2563eb, tracking:-13px -->
+      <p aria-hidden="true"
+         style="position:absolute;left:-23px;top:-53px;
+                font-size:227px;font-weight:700;color:#2563eb;
+                letter-spacing:-13px;line-height:260px;
+                white-space:nowrap;pointer-events:none;user-select:none;">EMO</p>
+
+      <!-- Section label badge: "新機能 - 01" + "エモーショナルシステム" -->
+      <!-- "新機能 - 01": above blue card right side, #2563eb, 14px -->
+      <p style="position:absolute;left:882px;top:23px;
+                font-size:14px;font-weight:700;color:#2563eb;
+                line-height:23.8px;white-space:nowrap;z-index:2;">新機能 - 01</p>
+      <!-- Separator line left -->
+      <div style="position:absolute;left:862px;top:37px;width:12px;height:1px;background:#2563eb;z-index:2;"></div>
+      <!-- Separator line right -->
+      <div style="position:absolute;left:964px;top:37px;width:13px;height:1px;background:#2563eb;z-index:2;"></div>
+      <!-- Blue bg rect for "エモーショナルシステム" -->
+      <div style="position:absolute;left:858px;top:47px;width:376px;height:54px;
+                  background:#2563eb;border-radius:8px;z-index:2;"></div>
+      <!-- Border overlay -->
+      <div style="position:absolute;left:862px;top:52px;width:376px;height:54px;
+                  border:1px solid #2563eb;border-radius:8px;pointer-events:none;z-index:3;"></div>
+      <!-- "エモーショナルシステム": 30px white font-black -->
+      <p style="position:absolute;left:878px;top:47px;
+                font-size:30px;font-weight:900;color:#fff;
+                line-height:54px;white-space:nowrap;z-index:4;">エモーショナルシステム</p>
+
+      <!-- Blue card: left:847, top:123, w:467, h:446, rounded:17, shadow -->
+      <div style="position:absolute;left:847px;top:123px;width:467px;height:446px;
+                  background:#2563eb;border-radius:17px;
+                  box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);"></div>
+
+      <!-- Title on blue card: left:893, top:151, white, inline mix of sizes -->
+      <p style="position:absolute;left:893px;top:151px;
+                font-weight:700;color:#fff;letter-spacing:1px;
+                white-space:nowrap;line-height:normal;">
+        <span style="font-size:20px;">あなたの期待と</span><span style="font-size:30px;">気持ちに応える</span><span style="font-size:20px;">AI</span>
+      </p>
+
+      <!-- Description: left:897, top:207, 16px white, 3 lines -->
+      <p style="position:absolute;left:897px;top:207px;
+                font-size:16px;font-weight:700;color:#fff;
+                letter-spacing:1px;line-height:normal;white-space:nowrap;">あなたのメンタル状況とリンクすることで</p>
+      <p style="position:absolute;left:897px;top:231px;
+                font-size:16px;font-weight:700;color:#fff;
+                letter-spacing:1px;line-height:normal;white-space:nowrap;">調子のいい時は精度が高く、落ち込んでいる時は</p>
+      <p style="position:absolute;left:897px;top:255px;
+                font-size:16px;font-weight:700;color:#fff;
+                letter-spacing:1px;line-height:normal;white-space:nowrap;">AIのメッセージがあなたを勇気づけます。</p>
+
+      <!-- imgRectangle195 (pink UI): left:452, top:165, w:292, h:246, opacity:0.9, rounded:8 -->
+      <img src="images/6b658d40-bc9b-4c8a-ab2b-c3f0e38d9f72.png"
+           alt="" aria-hidden="true"
+           style="position:absolute;left:452px;top:165px;width:292px;height:246px;
+                  object-fit:cover;border-radius:8px;opacity:0.9;">
+
+      <!-- Main photo (imgRectangle161): left:88, top:226, w:411, h:354, rounded:8, shadow -->
+      <div style="position:absolute;left:88px;top:226px;width:411px;height:354px;
+                  border-radius:8px;box-shadow:10px 14px 0px 0px rgba(0,0,0,0.25);
+                  background:#d9d9d9;overflow:hidden;">
+        <img src="images/0fa5d3fb-c3b0-473a-8294-f7cd9660e409.png"
+             alt="EMO機能イメージ"
+             style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
+      </div>
+
+      <!-- Icon group: container left:918, top:357, w:352, h:108, overflow:hidden -->
+      <!-- imgGroup (left icon): ~left:918, top:358, w:125, h:96 -->
+      <div style="position:absolute;left:918px;top:357px;width:352px;height:108px;overflow:hidden;">
+        <!-- imgGroup: inset[4.79%/64.55%/6.55%/0] → top:5.17, left:0, w:125, h:95.76 + inner extends 4.7% -->
+        <div style="position:absolute;top:5.17px;left:0;width:125.2px;height:95.76px;overflow:visible;">
+          <img src="images/3ec52fcc-01ba-4ce9-bdfc-43d7457bb3f1.svg"
+               alt="" aria-hidden="true"
+               style="position:absolute;top:-4.5px;left:0;width:100%;height:calc(100% + 9px);object-fit:contain;">
+        </div>
+        <!-- imgGroup1 (sync arrows): inset[3%/0.92%/3%/70.16%] → top:3.24, left:246.96, w:101.8, h:101.52 + extends 5.42% -->
+        <div style="position:absolute;top:3.24px;left:246.96px;width:101.8px;height:101.52px;overflow:visible;">
+          <img src="images/df249469-abc0-4325-b07f-94af33e47083.svg"
+               alt="" aria-hidden="true"
+               style="position:absolute;top:-5.5px;left:-5.5px;width:calc(100% + 11px);height:calc(100% + 11px);object-fit:contain;">
+        </div>
+        <!-- imgGroup2 (center icon): inset[19.09%/38.39%/10.36%/40.49%] → top:20.62, left:142.52, w:74.35, h:76.19 -->
+        <img src="images/c260ffc6-c6ef-4292-96d8-4fd943c4f200.svg"
+             alt="" aria-hidden="true"
+             style="position:absolute;top:20.62px;left:142.52px;width:74.35px;height:76.19px;object-fit:contain;">
+      </div>
+
+    </div><!-- /.emo-section__canvas -->
+  </section>
+
+  <!-- ============================================================
+       ANGEL section — exact Figma canvas (1512×682), scaled by JS
+       ============================================================ -->
+  <section class="angel-section" id="angel">
+    <div class="angel-section__canvas" id="angelCanvas">
+
+      <!-- ANGEL deco text (right bg) -->
+      <img src="images/c83f101f-eed4-4faa-9370-f5dacfb3a6c3.svg"
+           alt="" aria-hidden="true"
+           style="position:absolute;left:715px;top:-9px;width:797.076px;height:199.68px;object-fit:contain;pointer-events:none;">
+
+      <!-- White card -->
+      <div style="position:absolute;left:89px;top:148px;width:607px;height:433px;
+                  background:#fff;border-radius:14px;box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);">
+      </div>
+
+      <!-- Section label badge: "新機能 - 01" + "エンジェル作成機能" (white bg on blue section) -->
+      <p style="position:absolute;left:112px;top:23px;
+                font-size:14px;font-weight:700;color:#fff;
+                line-height:23.8px;white-space:nowrap;z-index:2;">新機能 - 01</p>
+      <div style="position:absolute;left:92px;top:37px;width:12px;height:1px;background:#fff;z-index:2;"></div>
+      <div style="position:absolute;left:190px;top:37px;width:13px;height:1px;background:#fff;z-index:2;"></div>
+      <div style="position:absolute;left:88px;top:47px;width:318px;height:54px;
+                  background:#fff;border-radius:8px;z-index:2;"></div>
+      <div style="position:absolute;left:92px;top:52px;width:318px;height:54px;
+                  border:1px solid rgba(255,255,255,0.9);border-radius:8px;pointer-events:none;z-index:3;"></div>
+      <p style="position:absolute;left:108px;top:47px;
+                font-size:30px;font-weight:900;color:#2563eb;
+                line-height:54px;white-space:nowrap;z-index:4;">エンジェル作成機能</p>
+
+      <!-- Title: エンジェルそれはエージェントを超えたエージェント機能 -->
+      <div style="position:absolute;left:114px;top:168px;
+                  font-size:0;font-weight:700;color:#2563eb;letter-spacing:1px;white-space:nowrap;">
+        <p style="margin:0;white-space:nowrap;">
+          <span style="font-size:30px;line-height:38px;">エンジェル</span><span style="font-size:20px;line-height:26px;letter-spacing:1px;">それはエージェント</span>
+        </p>
+        <p style="margin:0;font-size:20px;line-height:26px;white-space:nowrap;">を超えたエージェント機能</p>
+      </div>
+
+      <!-- Description lines -->
+      <p style="position:absolute;left:114px;top:238px;
+                font-size:16px;font-weight:700;color:#2563eb;letter-spacing:1px;
+                white-space:nowrap;line-height:normal;margin:0;">
+        エージェントとは違い、一度作成すると裏側であなたを定期的にサポート
+      </p>
+      <p style="position:absolute;left:114px;top:274px;width:560px;
+                font-size:16px;font-weight:700;color:#2563eb;letter-spacing:1px;
+                line-height:normal;margin:0;">
+        間違って消してしまったデータを感知して復元、上司の機嫌を考慮したメール作成
+      </p>
+      <div style="position:absolute;left:114px;top:325px;width:561px;
+                  font-size:16px;font-weight:700;color:#2563eb;letter-spacing:1px;
+                  line-height:normal;">
+        <p style="margin:0 0 0 0;">検索・SNSでの話題のドラマや映画、ゲーム・アニメ作品のネタバレ防止機能など</p>
+        <p style="margin:0;">仕事以外でもあなたを見守り続けます。</p>
+      </div>
+
+      <!-- Angel logo img: centered in card (card left:89 w:607 → center at 392.5, icon w:280.55 → left:252) -->
+      <img src="images/67668a4d-b9cc-44fb-8367-7c3145b42414.svg"
+           alt="" aria-hidden="true"
+           style="position:absolute;left:252px;top:428px;width:280.55px;height:99.81px;object-fit:contain;">
+
+      <!-- Small square photo (Rectangle163) -->
+      <img src="images/f4a35acb-6d10-4d87-ad86-57b34cdd9338.png"
+           alt="" aria-hidden="true"
+           style="position:absolute;left:756px;top:354px;width:354px;height:298px;
+                  object-fit:cover;border-radius:10px;">
+
+      <!-- Main tall photo (Rectangle195) -->
+      <img src="images/b88650c4-1adc-4dc8-b13d-cd9d1e21f6b1.png"
+           alt="エンジェル機能UI"
+           style="position:absolute;left:1040px;top:221px;width:423px;height:366px;
+                  object-fit:cover;border-radius:14px;box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);">
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       Transition — -AND- / そして
+       ============================================================ -->
+  <div class="transition-block">
+    <p class="transition-block__and sr">-AND-</p>
+    <p class="transition-block__sosite sr d2">そして</p>
+  </div>
+
+  <div class="limit-heading sr">
+    <p class="limit-heading__text">限界を超える新たなる機能</p>
+  </div>
+
+  <!-- ============================================================
+       Noise transition (top) — 8013:405 blocks on light→dark gradient
+       ============================================================ -->
+  <div class="noise-top">
+    <div class="noise-top__canvas" id="noiseTopCanvas">
+      <!-- Large blocks (#102147, opacity:0.9) — tops normalized from Figma y=4028 -->
+      <div style="position:absolute;left:28px;top:99px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:211px;top:0px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:351px;top:99px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:506px;top:99px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:694px;top:159px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:816px;top:18px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:918px;top:99px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:1054px;top:39px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:1209px;top:99px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:1276px;top:25px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <!-- Small overlapping blocks -->
+      <div style="position:absolute;left:949px;top:55px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:818px;top:127px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:718px;top:56px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:606px;top:57px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:472px;top:14px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:384px;top:115px;width:80px;height:86px;background:#102147;"></div>
+      <div style="position:absolute;left:311px;top:58px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:213px;top:101px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:102px;top:58px;width:80px;height:85px;background:#102147;"></div>
+    </div>
+  </div>
+
+  <div class="gradient-navy-solid"></div>
+
+  <!-- System unlock bar -->
+  <div class="unlock-bar">
+    <p class="unlock-bar__text">System.... Un Lock !</p>
+  </div>
+
+  <!-- ============================================================
+       Noise transition (bottom) — 8040:338 blocks on dark navy
+       ============================================================ -->
+  <div class="noise-bottom">
+    <div class="noise-bottom__canvas" id="noiseBottomCanvas">
+      <!-- Large blocks (#102147, opacity:0.9) — tops normalized from Figma y=4164 -->
+      <div style="position:absolute;left:1px;top:141px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:156px;top:0px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:324px;top:141px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:479px;top:141px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:789px;top:60px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:891px;top:141px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:1075px;top:21px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:1332px;top:16px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <!-- Small overlapping blocks -->
+      <div style="position:absolute;left:922px;top:97px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:791px;top:169px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:691px;top:98px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:579px;top:99px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:445px;top:56px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:357px;top:157px;width:80px;height:86px;background:#102147;"></div>
+      <div style="position:absolute;left:284px;top:100px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:186px;top:143px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:75px;top:100px;width:80px;height:85px;background:#102147;"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       OMEGA hero — scaled canvas 1512×1150 (7993:2180)
+       ============================================================ -->
+  <!-- ============================================================
+       OMEGA section — unified canvas 1512×2650 (7993:2180)
+       ============================================================ -->
+  <section class="omega-section" id="omega">
+    <div class="omega-section__canvas" id="omegaCanvas">
+
+      <!-- ── HERO ── -->
+      <!-- Band image (updated) -->
+      <img src="images/9633d592-2497-4144-98cf-b12b25614ec5.png"
+           alt="" aria-hidden="true"
+           style="position:absolute;left:89px;top:83px;width:1335px;height:997px;
+                  object-fit:cover;pointer-events:none;">
+      <!-- Ellipse13 (8053:154): circle behind symbol mark -->
+      <img src="images/c4ba9cf7-c42a-45e7-aa15-499339fe29b7.svg"
+           alt="" aria-hidden="true"
+           style="position:absolute;left:1003px;top:407px;width:252px;height:252px;
+                  display:block;max-width:none;pointer-events:none;">
+      <!-- オメガモード banner: dark overlay + white border -->
+      <div style="position:absolute;left:89px;top:735px;width:1335px;height:232px;
+                  background:rgba(45,45,45,0.7);pointer-events:none;"></div>
+      <div style="position:absolute;left:110px;top:752px;width:1293px;height:201px;
+                  border:1px solid rgba(255,255,255,0.7);pointer-events:none;"></div>
+      <!-- オメガモード text: top:783 -->
+      <p style="position:absolute;left:581px;top:783px;font-size:57px;font-weight:900;
+                color:#fff;letter-spacing:1.2px;white-space:nowrap;">オメガモード</p>
+      <!-- Flanking lines: top:817 -->
+      <div style="position:absolute;left:479px;top:817px;width:69px;height:2px;">
+        <img src="images/45c00fdf-c4a6-4a42-bdb0-bb04d2eab7c4.svg"
+             alt="" style="width:100%;height:2px;display:block;">
+      </div>
+      <div style="position:absolute;left:962px;top:817px;width:69px;height:2px;">
+        <img src="images/557fe5f2-4694-4dd7-9de0-b22c9e7edeb1.svg"
+             alt="" style="width:100%;height:2px;display:block;">
+      </div>
+      <!-- Description: top:877 -->
+      <p style="position:absolute;left:493px;top:877px;font-size:24px;font-weight:900;
+                color:#fff;letter-spacing:1.2px;white-space:nowrap;">溜まった生成ケージ消費して新たな機能を解放</p>
+      <!-- Separator -->
+      <div style="position:absolute;left:393px;top:1116px;width:399px;height:2px;">
+        <img src="images/080d1d09-b65f-45e0-a986-f78c94c88f28.svg"
+             alt="" style="width:100%;height:2px;display:block;">
+      </div>
+
+      <!-- ── DARK BAR ROW (8019:72) bg:#484848 opacity:40% ── -->
+      <div style="position:absolute;left:123px;top:1544px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:306px;top:1643px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:446px;top:1544px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:601px;top:1544px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:789px;top:1484px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:911px;top:1625px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:1013px;top:1544px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:1149px;top:1604px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:1304px;top:1544px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
+
+      <!-- ── CARD 1: インフィニットジェネレーション (left:89 top:1202 w:961 h:215) ── -->
+      <div style="position:absolute;left:89px;top:1202px;width:961px;height:215px;
+                  background:#fff;border:1px solid #000;border-radius:8px;
+                  box-shadow:10px 14px 0 rgba(255,255,255,0.25);overflow:hidden;">
+        <!-- Black header -->
+        <div style="position:absolute;left:0;top:0;width:422px;height:56px;
+                    background:#000;border-radius:0 0 8px 0;">
+          <p style="position:absolute;left:13px;top:14px;font-size:24px;font-weight:700;
+                    color:#fff;letter-spacing:1.2px;white-space:nowrap;margin:0;">インフィニットジェネレーション</p>
+        </div>
+        <!-- Subtitle -->
+        <p style="position:absolute;left:34px;top:80px;font-size:20px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">生成上限を超えた生成機能</p>
+        <!-- Text -->
+        <p style="position:absolute;left:34px;top:137px;font-size:16px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">月の生成上限値に達してもAIは止まらない。</p>
+        <p style="position:absolute;left:34px;top:164px;font-size:16px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">オメガモードであなたは天秤AIで制限なく業務をすることができます。</p>
+        <!-- Small icon (img1): left:940 top:1302 → relative: left:851, top:100, size:94 -->
+        <img src="images/f0745f0c-53a1-4b8e-a642-adee4630bcbf.svg"
+             alt="" aria-hidden="true"
+             style="position:absolute;left:851px;top:60px;width:94px;height:94px;object-fit:contain;">
+      </div>
+
+      <!-- ── WHITE BAR ROW 1 (8019:82) bg:white opacity:40% ── -->
+      <div style="position:absolute;left:89px;top:1806px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:272px;top:1905px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:412px;top:1806px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:567px;top:1806px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:755px;top:1746px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:877px;top:1887px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:979px;top:1806px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:1115px;top:1866px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:1270px;top:1806px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+
+      <!-- ── CARD 2: トランセンデンスオース (left:460 top:1703 w:961 h:243) ── -->
+      <div style="position:absolute;left:460px;top:1703px;width:961px;height:243px;
+                  background:#fff;border:1px solid #000;border-radius:8px;
+                  box-shadow:10px 14px 0 rgba(255,255,255,0.25);overflow:hidden;">
+        <div style="position:absolute;left:0;top:0;width:422px;height:56px;
+                    background:#000;border-radius:0 0 8px 0;">
+          <p style="position:absolute;left:13px;top:14px;font-size:24px;font-weight:700;
+                    color:#fff;letter-spacing:1.2px;white-space:nowrap;margin:0;">トランセンデンスオース</p>
+        </div>
+        <p style="position:absolute;left:45px;top:95px;font-size:20px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">超越権限</p>
+        <p style="position:absolute;left:41px;top:137px;font-size:16px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">もう煩わしい権限・実行の確認はいらない。</p>
+        <p style="position:absolute;left:41px;top:164px;font-size:16px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">あなたの端末内の処理実行の承認のみならず、上長承認など業務で必要な承認権限を</p>
+        <p style="position:absolute;left:41px;top:191px;font-size:16px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">自動で判断して実行します。</p>
+        <!-- Icon (img2) -->
+        <img src="images/f881d290-9e5b-4959-b72b-ea01f41b5316.svg"
+             alt="" aria-hidden="true"
+             style="position:absolute;left:844px;top:122px;width:102px;height:102px;object-fit:contain;">
+      </div>
+
+      <!-- ── WHITE BAR ROW 2 (8019:92) bg:white opacity:40% ── -->
+      <div style="position:absolute;left:110px;top:2384px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:293px;top:2483px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:433px;top:2384px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:588px;top:2384px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:776px;top:2324px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:898px;top:2465px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:1000px;top:2384px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:1136px;top:2444px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+      <div style="position:absolute;left:1291px;top:2384px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
+
+      <!-- ── CARD 3: フューチャープレデクション (left:89 top:2091 w:961 h:243) ── -->
+      <div style="position:absolute;left:89px;top:2091px;width:961px;height:243px;
+                  background:#fff;border:1px solid #000;border-radius:8px;
+                  box-shadow:10px 14px 0 rgba(255,255,255,0.25);overflow:hidden;">
+        <div style="position:absolute;left:0;top:0;width:422px;height:56px;
+                    background:#000;border-radius:0 0 8px 0;">
+          <p style="position:absolute;left:13px;top:14px;font-size:24px;font-weight:700;
+                    color:#fff;letter-spacing:1.2px;white-space:nowrap;margin:0;">フューチャー プレデクション</p>
+        </div>
+        <p style="position:absolute;left:32px;top:93px;font-size:20px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">未来を予知して動く</p>
+        <p style="position:absolute;left:32px;top:136px;font-size:16px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">単にプロンプトから生成するだけの時代は終わった。</p>
+        <p style="position:absolute;left:32px;top:168px;font-size:16px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">物価予想から天気予報、災害状況など生成のみならず、あらゆる地球の未来を予測して</p>
+        <p style="position:absolute;left:32px;top:195px;font-size:16px;font-weight:700;
+                  color:#000;letter-spacing:1.2px;white-space:nowrap;margin:0;">生成することで未来を見据えた業務を可能にします。</p>
+        <!-- Icon (img3) -->
+        <img src="images/dc62b174-3579-4290-9235-c22027696cdc.svg"
+             alt="" aria-hidden="true"
+             style="position:absolute;left:838px;top:122px;width:107px;height:107px;object-fit:contain;">
+      </div>
+
+      <!-- ── UNION RINGS + OMEGA TEXT + LIBRA ICON (top layer) ── -->
+      <!-- Union rings: outer 1102×335 flex, inner 335×1102 rotate(-90deg) -->
+      <div style="position:absolute;left:205px;top:355px;width:1102px;height:335px;
+                  display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:0.8;">
+        <div style="transform:rotate(-90deg);flex-shrink:0;width:335px;height:1102px;position:relative;">
+          <img src="images/762b5515-723b-4251-b4a5-88b9b725986d.svg"
+               alt="" style="position:absolute;inset:-0.36% -1.19%;width:calc(100% + 2.38%);height:calc(100% + 0.72%);display:block;max-width:none;">
+        </div>
+      </div>
+      <!-- OMEGA text — Layer 1: gray shadow -->
+      <p style="position:absolute;left:183px;top:416px;
+                font-family:'Rubik Glitch',cursive;font-style:normal;
+                font-size:220px;color:rgba(130,130,130,0.9);opacity:0.8;
+                letter-spacing:1.2px;line-height:220px;white-space:nowrap;pointer-events:none;">OMEGA</p>
+      <!-- OMEGA text — Layer 2: yellow -->
+      <p style="position:absolute;left:186px;top:420px;
+                font-family:'Rubik Glitch',cursive;font-style:normal;
+                font-size:220px;color:#f3e300;opacity:0.8;
+                letter-spacing:1.2px;line-height:220px;white-space:nowrap;pointer-events:none;">OMEGA</p>
+      <!-- OMEGA text — Layer 3: cream (Specter Black Italic — clean, non-glitch) -->
+      <p style="position:absolute;left:181px;top:420px;
+                font-family:'Specter','Impact','Arial Black',sans-serif;font-style:italic;font-weight:900;
+                font-size:220px;background:#fbffde;
+                -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+                background-clip:text;
+                letter-spacing:-8.8px;line-height:220px;white-space:nowrap;pointer-events:none;">OMEGA</p>
+      <!-- Symbol mark (8053:511): 252×252 — rebuilt clean -->
+      <div style="position:absolute;left:1003px;top:407px;width:252px;height:252px;overflow:visible;pointer-events:none;">
+        <!-- imgGroup143 (8053:581): outer ring + glitch layer, offset by Figma insets -->
+        <div style="position:absolute;top:-6.70px;right:-4.66px;bottom:6.70px;left:4.66px;">
+          <img src="images/413bf45d-13b8-4c08-bb3a-9446ee6304ea.svg"
+               alt="" style="position:absolute;top:0;left:0;width:252px;height:252px;display:block;max-width:none;">
+        </div>
+        <!-- imgGroup144 (8053:644): secondary ring layer, offset by Figma insets -->
+        <div style="position:absolute;top:14.74px;right:-1.16px;bottom:-14.74px;left:1.16px;">
+          <img src="images/03953f47-cad8-4a5a-89a3-4818ab7b8f65.svg"
+               alt="" style="position:absolute;top:0;left:0;width:252px;height:252px;display:block;max-width:none;">
+        </div>
+        <!-- imgGroup (8053:512): inner icon (omega symbol), smaller area -->
+        <div style="position:absolute;top:2.24px;right:17.74px;bottom:0;left:15.85px;">
+          <img src="images/d3ffab69-13f3-476b-8683-2ee48555115d.svg"
+               alt="" style="position:absolute;top:0;left:0;width:218px;height:250px;display:block;max-width:none;">
+        </div>
+        <!-- img1: base full-size layer -->
+        <img src="images/d07b751d-113f-4475-80b2-dcc9f55ce68e.svg"
+             alt="" style="position:absolute;top:0;left:0;width:252px;height:252px;display:block;max-width:none;">
+      </div>
+
+    </div><!-- /.omega-section__canvas -->
+  </section>
+
+  <!-- ============================================================
+       Price section
+       ============================================================ -->
+  <section class="price-section" id="price">
+    <div class="price-section__title-bg" aria-hidden="true">Price</div>
+
+    <div class="price-section__inner">
+      <h2 class="price-section__title sr">料金</h2>
+
+      <div class="price-main-box sr d1">
+        <div class="price-grid">
+          <div class="price-grid__item">
+            <p class="price-grid__price-row">
+              <span class="price-grid__label">月額</span>
+              <span class="price-grid__value">1100円</span>
+            </p>
+            <!-- invisible spacer to match badge height on right side -->
+            <span aria-hidden="true" class="price-grid__note" style="visibility:hidden;">placeholder</span>
+          </div>
+          <div class="price-grid__sep"></div>
+          <div class="price-grid__item">
+            <p class="price-grid__price-row">
+              <span class="price-grid__label">年間</span>
+              <span class="price-grid__value">13200円</span>
+            </p>
+            <span class="price-grid__note">0ヶ月分お得</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional options -->
+      <p class="price-section__options-title sr d2">追加オプション</p>
+
+      <div class="price-options-grid">
+        <!-- USS -->
+        <div class="price-option sr d3">
+          <p class="price-option__name">USS</p>
+          <p class="price-option__full">アルティメットセキュアシステム</p>
+          <div class="price-option__sep"></div>
+          <p class="price-option__abbr">
+            Ultimate<br>
+            Secure<br>
+            System
+          </p>
+          <p class="price-option__price">$1100 USD</p>
+        </div>
+
+        <!-- MAX -->
+        <div class="price-option sr d4">
+          <p class="price-option__name">MAX</p>
+          <p class="price-option__full">マキシマムアナライズエクスペリエンス</p>
+          <div class="price-option__sep"></div>
+          <p class="price-option__abbr">
+            Maximum<br>
+            Analyze<br>
+            Experience
+          </p>
+          <p class="price-option__price">$1100 EUR</p>
+        </div>
+
+        <!-- GOD -->
+        <div class="price-option sr d5">
+          <p class="price-option__name">GOD</p>
+          <p class="price-option__full">ジェネレートオブディスティニー</p>
+          <div class="price-option__sep"></div>
+          <p class="price-option__abbr">
+            Generate<br>
+            Of<br>
+            Destiny
+          </p>
+          <p class="price-option__price">$1100 JPY</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SPECIAL section
+       ============================================================ -->
+  <div class="special-section" id="contact">
+    <h2 class="special-section__title sr">SPECIAL</h2>
+  </div>
+
+  <!-- ============================================================
+       CTA section
+       ============================================================ -->
+  <div class="cta-section">
+    <p class="cta-section__q sr">もし迷ってるなら</p>
+    <p class="cta-section__a sr d1">
+      天秤AIを契約してから<br>聞こう！！
+    </p>
+  </div>
+
+  <!-- ============================================================
+       TENBIN AI large text
+       ============================================================ -->
+  <div class="tenbin-end">
+    <p class="tenbin-end__text sr">TENBIN AI</p>
+  </div>
+
+  <!-- ============================================================
+       Footer
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer__logo">
+      <span>⚖</span>
+      <span class="footer__logo-name">天秤</span>
+      <span>AI</span>
+    </div>
+    <p class="footer__note">
+      ※本ページの機能紹介はエイプリルフール用の架空演出です。<br>
+      「天秤AI」自体は実在するサービスです。架空ではありません。念のため。
+    </p>
+    <p class="footer__copy">© 2025 天秤研究所. All rights reserved.</p>
+  </footer>
+
+  <!-- ============================================================
+       Scripts
+       ============================================================ -->
+  <script>
+    // Canvas scaling — scales a 1512px-wide Figma canvas to the viewport
+    const CANVAS_W = 1512;
+    function scaleCanvas(canvasId, sectionEl, canvasH) {
+      const canvas = document.getElementById(canvasId);
+      if (!canvas) return;
+      const scale = window.innerWidth / CANVAS_W;
+      canvas.style.transform = 'scale(' + scale + ')';
+      sectionEl.style.height = Math.round(canvasH * scale) + 'px';
+    }
+    function scaleAllCanvases() {
+      scaleCanvas('navCanvas',         document.querySelector('.nav'),           71);
+      scaleCanvas('heroCanvas',        document.querySelector('.hero'),          786);
+      scaleCanvas('newCanvas',         document.querySelector('.new-section'),   562);
+      scaleCanvas('vsCanvas',          document.querySelector('.vs-section'),    620);
+      scaleCanvas('emoCanvas',         document.querySelector('.emo-section'),   648);
+      scaleCanvas('angelCanvas',       document.querySelector('.angel-section'), 682);
+      scaleCanvas('noiseTopCanvas',    document.querySelector('.noise-top'),     280);
+      scaleCanvas('noiseBottomCanvas', document.querySelector('.noise-bottom'),  270);
+      scaleCanvas('omegaCanvas',        document.querySelector('.omega-section'), 2650);
+    }
+    scaleAllCanvases();
+    window.addEventListener('resize', scaleAllCanvases, { passive: true });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); }),
+      { threshold: 0.12 }
+    );
+    document.querySelectorAll('.sr,.sr-l,.sr-r').forEach(el => observer.observe(el));
+
+    // Nav scroll shadow
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+  </script>
+</body>
+</html>

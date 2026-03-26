@@ -7,9 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Pixelify+Sans:wght@700&family=Rubik+Glitch&display=swap" rel="stylesheet">
-  <!-- Figma capture script (remove before production) -->
-  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
-  <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -42,6 +40,23 @@
         <span style="position:absolute;left:3px;top:3px;right:-6px;bottom:-5px;border:1px solid #2563eb;border-radius:2px;pointer-events:none;"></span>
         <span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#2563eb;letter-spacing:0.39px;">CONTACT</span>
       </a>
+    </div>
+
+    <!-- Mobile nav bar (shown only on small screens) -->
+    <div class="nav__mobile" id="navMobile">
+      <img src="images/01b65565-2dbd-48ee-b555-c2ddc03c3b57.svg" alt="TenbinAI" class="nav__mobile-logo">
+      <button class="nav__hamburger" id="hamburgerBtn" aria-label="メニューを開く" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <!-- Mobile dropdown menu -->
+    <div class="nav__mobile-menu" id="navMobileMenu" aria-hidden="true">
+      <a href="#new-section" class="nav__mobile-link">NEW</a>
+      <a href="#omega" class="nav__mobile-link">OMEGA</a>
+      <a href="#price" class="nav__mobile-link">PRICE</a>
+      <a href="#contact" class="nav__mobile-link">CONTACT</a>
     </div>
   </nav>
 
@@ -880,6 +895,24 @@
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
+
+    // Mobile hamburger menu
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const navMobileMenu = document.getElementById('navMobileMenu');
+    if (hamburgerBtn && navMobileMenu) {
+      hamburgerBtn.addEventListener('click', () => {
+        const isOpen = navMobileMenu.classList.toggle('open');
+        hamburgerBtn.setAttribute('aria-expanded', isOpen);
+        navMobileMenu.setAttribute('aria-hidden', !isOpen);
+      });
+      navMobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navMobileMenu.classList.remove('open');
+          hamburgerBtn.setAttribute('aria-expanded', 'false');
+          navMobileMenu.setAttribute('aria-hidden', 'true');
+        });
+      });
+    }
   </script>
 </body>
 </html>

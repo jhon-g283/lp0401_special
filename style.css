@@ -17,8 +17,8 @@
    Reset
    ============================================================ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--font); background: var(--light); color: #111; overflow-x: hidden; }
+html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
+body { font-family: var(--font); background: var(--light); color: #111; overflow-x: hidden; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
 img { display: block; max-width: 100%; }
 
@@ -537,20 +537,39 @@ img { display: block; max-width: 100%; }
 /* 価格ブロック */
 .price-option__price-block {
   margin-top: auto; padding-top: 40px;
-  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  display: flex; align-items: center;
+}
+.price-option__price-row {
+  display: flex; align-items: baseline; gap: 2px;
+}
+.price-option__sym {
+  font-size: clamp(14px,1.4vw,20px); font-weight: 700;
+  line-height: 1; align-self: flex-start; margin-top: 8px;
 }
 .price-option__amount {
-  font-size: clamp(32px,3.5vw,48px); font-weight: 700;
-  color: var(--blue); letter-spacing: .02em; margin: 0;
-  line-height: 1;
+  font-size: clamp(36px,4vw,54px); font-weight: 700;
+  letter-spacing: .02em; margin: 0; line-height: 1;
 }
-.price-option__currency {
-  font-size: clamp(18px,2vw,28px); font-weight: 900;
-  letter-spacing: .14em; text-transform: uppercase; margin: 6px 0 0;
+.price-option__meta {
+  display: flex; flex-direction: column;
+  margin-left: 8px; align-self: center; gap: 2px;
 }
-.price-option--usd .price-option__currency { color: #22c55e; }
-.price-option--eur .price-option__currency { color: #3b82f6; }
-.price-option--jpy .price-option__currency { color: #ef4444; }
+.price-option__meta span {
+  font-size: clamp(10px,0.9vw,13px); font-weight: 700;
+  line-height: 1.4; white-space: nowrap;
+}
+/* USD — green */
+.price-option--usd .price-option__sym,
+.price-option--usd .price-option__amount,
+.price-option--usd .price-option__meta span { color: #22c55e; }
+/* EUR — blue */
+.price-option--eur .price-option__sym,
+.price-option--eur .price-option__amount,
+.price-option--eur .price-option__meta span { color: #3b82f6; }
+/* JPY — red */
+.price-option--jpy .price-option__sym,
+.price-option--jpy .price-option__amount,
+.price-option--jpy .price-option__meta span { color: #ef4444; }
 
 /* ============================================================
    SPECIAL / CTA

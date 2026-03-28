@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 195" fill="none">
+  <!-- Outer rounded rectangle -->
+  <rect x="7" y="7" width="242" height="158" rx="26" stroke="#2563eb" stroke-width="10"/>
+
+  <!-- Document / list icon (left) -->
+  <rect x="32" y="30" width="80" height="105" rx="8" stroke="#2563eb" stroke-width="7"/>
+  <line x1="50" y1="58"  x2="93" y2="58"  stroke="#2563eb" stroke-width="7" stroke-linecap="round"/>
+  <line x1="50" y1="78"  x2="93" y2="78"  stroke="#2563eb" stroke-width="7" stroke-linecap="round"/>
+  <line x1="50" y1="98"  x2="93" y2="98"  stroke="#2563eb" stroke-width="7" stroke-linecap="round"/>
+  <line x1="50" y1="118" x2="76" y2="118" stroke="#2563eb" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Smiley face (right) -->
+  <circle cx="182" cy="81" r="50" stroke="#2563eb" stroke-width="7"/>
+  <!-- Left eye (happy arc) -->
+  <path d="M161 68 Q168 59 175 68" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+  <!-- Right eye (happy arc) -->
+  <path d="M189 68 Q196 59 203 68" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+  <!-- Smile -->
+  <path d="M160 92 Q182 118 204 92" stroke="#2563eb" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+  <!-- Heart (bottom center, overlapping outer rect) -->
+  <path d="M128 190
+           C128 190 92 168 92 146
+           C92 133 101 125 113 128
+           C119 130 125 136 128 140
+           C131 136 137 130 143 128
+           C155 125 164 133 164 146
+           C164 168 128 190 128 190 Z"
+        fill="#2563eb"/>
+</svg>

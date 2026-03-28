@@ -17,8 +17,8 @@
   <nav class="nav" id="nav">
     <div class="nav__canvas" id="navCanvas">
       <!-- Logo (8053:1023) — combined icon + text + underline as single image -->
-      <img src="images/01b65565-2dbd-48ee-b555-c2ddc03c3b57.svg" alt="TenbinAI"
-           style="position:absolute;left:10px;top:8px;height:54px;width:auto;display:block;max-width:none;">
+      <img src="images/hero-wordmark-updated.svg" alt="TenbinAI"
+           style="position:absolute;left:10px;top:12px;height:40px;width:198px;display:block;max-width:none;">
 
       <!-- NEW button -->
       <a href="#new-section" style="position:absolute;left:891px;top:12px;width:104px;height:44px;border:2px solid #2563eb;border-radius:2px;display:block;">
@@ -44,7 +44,7 @@
 
     <!-- Mobile nav bar (shown only on small screens) -->
     <div class="nav__mobile" id="navMobile">
-      <img src="images/01b65565-2dbd-48ee-b555-c2ddc03c3b57.svg" alt="TenbinAI" class="nav__mobile-logo">
+      <img src="images/hero-wordmark-updated.svg" alt="TenbinAI" class="nav__mobile-logo">
       <button class="nav__hamburger" id="hamburgerBtn" aria-label="メニューを開く" aria-expanded="false">
         <span></span>
         <span></span>
@@ -65,41 +65,62 @@
        ============================================================ -->
   <section class="hero" id="top">
     <div class="hero__canvas" id="heroCanvas">
-
-      <!-- ① Large ellipse top-right (8040:244) -->
-      <img src="images/e0c93445-e3e2-4fcb-a998-f25a4ed0ca5f.svg"
-           alt="" aria-hidden="true"
-           style="position:absolute;left:1080px;top:354px;width:778px;height:778px;display:block;max-width:none;pointer-events:none;">
-
-      <!-- ② Decorative cyan squares (left cluster) -->
+      <!-- Background image (8089:6530) — light-ray texture, opacity 0.3 -->
+      <div aria-hidden="true" style="position:absolute;inset:0;opacity:0.3;pointer-events:none;overflow:hidden;z-index:0;">
+        <img src="images/hero-bg.png" alt=""
+             style="position:absolute;left:1.04%;top:-15.55%;width:100%;height:100%;display:block;max-width:none;object-fit:cover;transform:scale(-1,-1);">
+        <div style="position:absolute;inset:0;background:rgba(250,249,255,0.2);"></div>
+      </div>
+      <!-- HUD / Radar (8089:6184) -->
+      <div class="hero-radar hero-hud-hrd" aria-hidden="true"
+           style="position:absolute;left:1033px;top:309px;width:958px;height:955px;pointer-events:none;z-index:0;overflow:visible;opacity:0.4;">
+        <img src="images/hero-hud-hrd.svg" alt=""
+             style="position:absolute;left:28px;top:22px;width:910px;height:910px;display:block;max-width:none;pointer-events:none;filter:brightness(0) invert(1);">
+      </div>
+      <!-- Rectangle 226 (8089:2595) — tall dark blue block, far left edge -->
+      <div aria-hidden="true" style="pointer-events:none;position:absolute;left:-56px;top:50px;width:76px;height:708px;background:#2563eb;border:4px solid #2563eb;border-radius:8px;z-index:1;"></div>
+      <!-- Rectangle 227 (8089:6534) — dark blue block, top-left -->
+      <div aria-hidden="true" style="pointer-events:none;position:absolute;left:5px;top:55px;width:64px;height:187px;background:#2563eb;border:4px solid #2563eb;border-radius:8px;z-index:1;"></div>
+      <!-- Rectangle 195 (8039:200) — dark blue block, bottom-left -->
+      <div aria-hidden="true" style="pointer-events:none;position:absolute;left:0;top:601px;width:51px;height:187px;background:#2563eb;border:4px solid #2563eb;border-radius:8px;z-index:1;"></div>
+      <!-- Rectangle 225 (8089:2593) — dark blue block, top-right -->
+      <div aria-hidden="true" style="pointer-events:none;position:absolute;left:1452px;top:44px;width:53px;height:187px;background:#2563eb;border:4px solid #2563eb;border-radius:8px;z-index:1;"></div>
+      <!-- tall dark blue block, far right edge (mirror of Rectangle 226) -->
+      <div aria-hidden="true" style="pointer-events:none;position:absolute;left:1492px;top:50px;width:76px;height:708px;background:#2563eb;border:4px solid #2563eb;border-radius:8px;z-index:1;"></div>
+      <!-- dark blue block, bottom-right (mirror of Rectangle 195) -->
+      <div aria-hidden="true" style="pointer-events:none;position:absolute;left:1461px;top:601px;width:51px;height:187px;background:#2563eb;border:4px solid #2563eb;border-radius:8px;z-index:1;"></div>
       <div class="hero-deco" aria-hidden="true" style="pointer-events:none;">
-        <!-- 91×91 squares -->
         <div style="position:absolute;left:314px;top:423px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
         <div style="position:absolute;left:420px;top:261px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:260px;top:699px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:372px;top:749px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:366px;top:537px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
         <div style="position:absolute;left:506px;top:435px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
         <div style="position:absolute;left:612px;top:273px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:260px;top:608px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:372px;top:658px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:366px;top:446px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:272px;top:416px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:378px;top:254px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
-        <!-- 65×65 squares -->
-        <div style="position:absolute;left:82px;top:416px;width:65px;height:65px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:188px;top:254px;width:65px;height:65px;background:#aaeaff;opacity:.5;"></div>
-        <!-- 62×61 rectangles -->
-        <div style="position:absolute;left:416px;top:373px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:272px;top:507px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:378px;top:345px;width:91px;height:91px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:82px;top:481px;width:65px;height:65px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:195px;top:364px;width:65px;height:65px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:414px;top:370px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
         <div style="position:absolute;left:522px;top:211px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
         <div style="position:absolute;left:160px;top:362px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
         <div style="position:absolute;left:266px;top:200px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:210px;top:536px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:316px;top:374px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:210px;top:597px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:316px;top:435px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
         <div style="position:absolute;left:445px;top:510px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
         <div style="position:absolute;left:551px;top:348px;width:61px;height:62px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:347px;top:507px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
-        <div style="position:absolute;left:453px;top:345px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:347px;top:568px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
+        <div style="position:absolute;left:453px;top:406px;width:62px;height:61px;background:#aaeaff;opacity:.5;"></div>
       </div>
 
-      <!-- ③ Blue vertical bars -->
+      <!-- 分割表示: child6 (506,435, 91×91) を2×2の4ピースに分解して時差出現 -->
+      <div class="hero-deco-split" aria-hidden="true" style="pointer-events:none;">
+        <div style="position:absolute;left:506px;top:435px;width:44px;height:44px;"></div><!-- TL -->
+        <div style="position:absolute;left:553px;top:435px;width:44px;height:44px;"></div><!-- TR -->
+        <div style="position:absolute;left:506px;top:482px;width:44px;height:44px;"></div><!-- BL -->
+        <div style="position:absolute;left:553px;top:482px;width:44px;height:44px;"></div><!-- BR -->
+      </div>
+
       <div class="hero-deco-bars" aria-hidden="true" style="pointer-events:none;">
         <div style="position:absolute;left:126px;top:622px;width:6px;height:475px;"><div></div></div>
         <div style="position:absolute;left:295px;top:669px;width:6px;height:475px;"><div></div></div>
@@ -109,50 +130,45 @@
         <div style="position:absolute;left:1203px;top:71px;width:6px;height:475px;"><div></div></div>
         <div style="position:absolute;left:1330px;top:467px;width:6px;height:475px;"><div></div></div>
       </div>
-
-      <!-- ④ Logo / Union (8053:1107): left:88 top:152 w:205 h:132 -->
-      <img src="images/1e0715c6-5807-4bc8-a608-9df0aae8ca61.svg"
-           alt="天秤AI" aria-hidden="true"
-           style="position:absolute;left:88px;top:152px;width:205px;height:132px;display:block;max-width:none;pointer-events:none;">
-
-      <!-- ⑤ TenbinAI wordmark (8053:884): left:338 top:312 w:836.836 h:162.77 -->
-      <img src="images/acb50060-f78b-4d9d-88d0-7676ff96ada5.svg"
-           alt="Tenbin AI" aria-hidden="true"
-           style="position:absolute;left:338px;top:312px;width:837px;height:163px;display:block;max-width:none;pointer-events:none;">
-
-      <!-- ⑦ White semi-transparent UI overlay boxes -->
-      <div aria-hidden="true" style="pointer-events:none;">
-        <div style="position:absolute;left:581px;top:557px;width:371px;height:68px;background:#fff;border:4px solid #fff;border-radius:8px;opacity:.4;"></div>
-        <div style="position:absolute;left:914px;top:549px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
-        <div style="position:absolute;left:936px;top:541px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
-        <div style="position:absolute;left:949px;top:555px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
-        <div style="position:absolute;left:566px;top:610px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
-        <div style="position:absolute;left:581px;top:619px;width:22px;height:15px;background:#fff;border:4px solid #fff;opacity:.4;"></div>
-      </div>
-
-      <!-- ⑧ Main copy (7993:1797): container left:38 top:71 -->
-      <!-- Line 1: 4/1すべてのAIサービスは — canvas left:94 top:71 50px #123279 -->
-      <p style="position:absolute;left:94px;top:71px;font-size:50px;font-weight:700;color:#123279;line-height:80.5px;white-space:nowrap;pointer-events:none;">4/1すべてのAIサービスは</p>
-      <!-- Line 2a: 過去 — canvas left:129 top:179 59px white -->
-      <p style="position:absolute;left:129px;top:179px;font-size:59px;font-weight:700;color:#fff;line-height:80.5px;white-space:nowrap;pointer-events:none;">過去</p>
-      <!-- Line 2b: になる。— canvas left:282 top:179 49px #123279 -->
-      <p style="position:absolute;left:282px;top:179px;font-size:49px;font-weight:700;color:#123279;line-height:80.5px;white-space:nowrap;pointer-events:none;">になる。</p>
-
-      <!-- ⑨ 天秤 AI NEXT PROJECT (7995:2409): left:608 top:553 30px #0b3d91 -->
-      <p style="position:absolute;left:608px;top:553px;font-size:30px;font-weight:700;color:#0b3d91;line-height:80.5px;white-space:nowrap;pointer-events:none;">天秤 AI NEXT PROJECT</p>
-
-      <!-- ⑩ Right English descriptions (7993:1805 / 7995:2404 / 7995:2406) -->
-      <p style="position:absolute;left:915px;top:666px;font-size:18px;font-weight:700;color:#2563eb;line-height:33.3px;white-space:nowrap;-webkit-text-stroke:1px #fff;paint-order:stroke fill;pointer-events:none;">You don't need judgement</p>
-      <p style="position:absolute;left:915px;top:700px;font-size:18px;font-weight:700;color:#2563eb;line-height:33.3px;white-space:nowrap;-webkit-text-stroke:1px #fff;paint-order:stroke fill;pointer-events:none;">Your job progress is more accellarte with emotion</p>
-      <p style="position:absolute;left:915px;top:736px;font-size:18px;font-weight:700;color:#2563eb;line-height:33.3px;white-space:nowrap;-webkit-text-stroke:1px #fff;paint-order:stroke fill;pointer-events:none;">Your working with AI go to Infinity</p>
-
-      <!-- ⑬ SCROLL indicator (left:734 top:699) -->
+      <!-- Catch copy + stamp (7993:1797) — glitch blocks fade in individually -->
+      <img src="images/hero-union-stamp.svg" alt="" aria-hidden="true" class="hero-glitch-stamp"
+           style="position:absolute;left:862px;top:105px;width:205px;height:132px;display:block;max-width:none;pointer-events:none;z-index:4;">
+      <!-- Glitch blocks (8092:7177–7185) — スタンプ(0〜1.8s)に合わせてスタガー表示 -->
+      <div class="hero-glitch-block hero-glitch-block--main" style="left:859px;top:134px;width:42px;height:33px;"></div>
+      <div class="hero-glitch-block" style="left:880px;top:100px;width:28px;height:22px;animation-delay:1.0s;"></div>
+      <div class="hero-glitch-block" style="left:1019px;top:100px;width:28px;height:22px;animation-delay:1.1s;"></div>
+      <div class="hero-glitch-block" style="left:1019px;top:134px;width:42px;height:33px;animation-delay:1.2s;"></div>
+      <div class="hero-glitch-block" style="left:926px;top:100px;width:34px;height:27px;animation-delay:1.3s;"></div>
+      <div class="hero-glitch-block" style="left:1025px;top:187px;width:42px;height:33px;animation-delay:1.4s;"></div>
+      <div class="hero-glitch-block" style="left:871px;top:171px;width:37px;height:29px;animation-delay:1.5s;"></div>
+      <div class="hero-glitch-block" style="left:873px;top:208px;width:42px;height:33px;animation-delay:1.6s;"></div>
+      <div class="hero-glitch-block" style="left:939px;top:208px;width:42px;height:33px;animation-delay:1.7s;"></div>
+      <p style="position:absolute;left:282px;top:131px;z-index:5;font-size:50px;font-weight:700;color:#2c2c2e;line-height:80.5px;white-space:nowrap;pointer-events:none;">4/1すべてのAIサービスは</p>
+      <p style="position:absolute;left:901px;top:127px;z-index:5;font-size:59px;font-weight:700;color:#fff;line-height:80.5px;white-space:nowrap;pointer-events:none;">過去</p>
+      <p style="position:absolute;left:1061px;top:131px;z-index:5;font-size:49px;font-weight:700;color:#2c2c2e;line-height:80.5px;white-space:nowrap;pointer-events:none;">になる。</p>
+      <!-- Service logo background bar (8092:7055) — #d0cee8 horizontal band -->
       <div aria-hidden="true"
-           style="position:absolute;left:734px;top:699px;width:44px;height:59px;display:flex;flex-direction:column;align-items:center;gap:8px;">
+           style="position:absolute;left:20px;top:390px;width:1471px;height:101px;
+                  background:#d0cee8;opacity:0.7;border-radius:4px;z-index:2;pointer-events:none;"></div>
+      <!-- Wordmark + new service icon (8092:6998) — icon at left, text at right -->
+      <img src="images/hero-wordmark-updated.svg"
+           alt="Tenbin AI" aria-hidden="true"
+           style="position:absolute;left:230px;top:329px;width:1052px;height:213px;display:block;max-width:none;pointer-events:none;z-index:3;">
+      <!-- Glass UI chips (8089:2597) — Figma 8089:2598 -->
+      <div aria-hidden="true" style="pointer-events:none;z-index:2;">
+        <div style="position:absolute;left:584px;top:617px;width:371px;height:68px;background:#b1e8fa;border:4px solid #fff;border-radius:8px;opacity:.4;"></div>
+        <div style="position:absolute;left:917px;top:609px;width:22px;height:15px;background:#b1e8fa;border:4px solid #fff;opacity:.4;"></div>
+        <div style="position:absolute;left:939px;top:601px;width:22px;height:15px;background:#b1e8fa;border:4px solid #fff;opacity:.4;"></div>
+        <div style="position:absolute;left:952px;top:615px;width:22px;height:15px;background:#b1e8fa;border:4px solid #fff;opacity:.4;"></div>
+        <div style="position:absolute;left:569px;top:670px;width:22px;height:15px;background:#b1e8fa;border:4px solid #fff;opacity:.4;"></div>
+        <div style="position:absolute;left:584px;top:679px;width:22px;height:15px;background:#b1e8fa;border:4px solid #fff;opacity:.4;"></div>
+      </div>
+      <p style="position:absolute;left:611px;top:613px;z-index:3;font-size:29px;font-weight:700;color:#2c2c2e;line-height:80.5px;white-space:nowrap;pointer-events:none;">天秤 AI NEXT PROJECT</p>
+      <div aria-hidden="true"
+           style="position:absolute;left:734px;top:699px;width:44px;height:59px;display:flex;flex-direction:column;align-items:center;gap:8px;z-index:4;">
         <div style="width:1px;height:36px;background:rgba(0,0,0,.2);margin-left:1px;"></div>
         <span style="font-size:9px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:#2563eb;">SCROLL</span>
       </div>
-
     </div><!-- /.hero__canvas -->
   </section>
 
@@ -162,44 +178,64 @@
   <section class="new-section" id="new-section">
     <div class="new-section__canvas" id="newCanvas">
 
-      <!-- "NEW" large decorative text: left:-12, top:-16, 147px, #2563eb, tracking:-8px -->
-      <p aria-hidden="true"
+
+      <!-- "NEW" large decorative text -->
+      <p aria-hidden="true" class="new-sr"
          style="position:absolute;left:-12px;top:-16px;
                 font-size:147px;font-weight:700;color:#2563eb;
                 letter-spacing:-8px;line-height:200px;
                 white-space:nowrap;pointer-events:none;user-select:none;">NEW</p>
 
-      <!-- Product image: left:795(=111+684), top:167(=183.52-16.52), w:561, h:338 -->
-      <img src="images/b5031c18-3bd7-4dcd-8811-eab4f24589bf.png"
-           alt="新機能イメージ"
-           style="position:absolute;left:795px;top:167px;width:561px;height:338px;
+      <!-- Background UI image -->
+      <img src="images/new-bg.png" alt="" class="new-sr" data-delay="100"
+           style="position:absolute;left:795px;top:129px;width:561px;height:338px;
                   object-fit:cover;pointer-events:none;">
 
-      <!-- ANNOUNCEMENT label: cyan line at (135,190), text at (189,184) -->
-      <div style="position:absolute;left:135px;top:190px;
+      <!-- Person photos -->
+      <img src="images/new-user1.png" alt="" class="new-sr" data-delay="150"
+           style="position:absolute;left:774px;top:79px;width:144px;height:122px;
+                  object-fit:cover;border-radius:10px;box-shadow:0 4px 4px rgba(0,0,0,0.25);pointer-events:none;z-index:2;">
+      <img src="images/new-user2.png" alt="" class="new-sr" data-delay="250"
+           style="position:absolute;left:1043px;top:108px;width:144px;height:122px;
+                  object-fit:cover;border-radius:10px;box-shadow:0 4px 4px rgba(0,0,0,0.25);pointer-events:none;z-index:2;">
+      <img src="images/new-user4.png" alt="" class="new-sr" data-delay="350"
+           style="position:absolute;left:763px;top:375px;width:144px;height:122px;
+                  object-fit:cover;border-radius:10px;box-shadow:0 4px 4px rgba(0,0,0,0.25);pointer-events:none;z-index:2;">
+      <img src="images/new-user3.png" alt="" class="new-sr" data-delay="450"
+           style="position:absolute;left:1246px;top:368px;width:144px;height:122px;
+                  object-fit:cover;border-radius:10px;box-shadow:0 4px 4px rgba(0,0,0,0.25);pointer-events:none;z-index:2;">
+
+      <!-- ANNOUNCEMENT label -->
+      <div class="new-sr" data-delay="100"
+           style="position:absolute;left:135px;top:190px;
                   width:40px;height:4px;background:#00e5ff;border-radius:2px;"></div>
-      <p style="position:absolute;left:189px;top:184px;
+      <p class="new-sr" data-delay="100"
+         style="position:absolute;left:189px;top:184px;
                 font-size:10px;font-weight:700;color:#2563eb;
                 letter-spacing:2px;text-transform:uppercase;
                 line-height:17px;white-space:nowrap;">ANNOUNCEMENT — 4.01.2025</p>
 
-      <!-- 比較するだけじゃない。: left:128(=111+17), top:212(=183.52+28.52), 44px, #0b3d91 -->
-      <p style="position:absolute;left:128px;top:212px;
-                font-size:44px;font-weight:700;color:#0b3d91;
+      <!-- 比較するだけじゃない。 -->
+      <p class="new-sr" data-delay="200"
+         style="position:absolute;left:128px;top:212px;
+                font-size:44px;font-weight:700;color:#2c2c2e;
                 line-height:57.2px;white-space:nowrap;">比較するだけじゃない。</p>
 
-      <!-- 天秤AIはさらに進化する: left:128, top:269(=183.52+91.52-5.5), 44px, #0b3d91 -->
-      <p style="position:absolute;left:128px;top:270px;
-                font-size:44px;font-weight:700;color:#0b3d91;
+      <!-- 天秤AIはさらに進化する -->
+      <p class="new-sr" data-delay="320"
+         style="position:absolute;left:128px;top:270px;
+                font-size:44px;font-weight:700;color:#2c2c2e;
                 line-height:57.2px;white-space:nowrap;">天秤AIはさらに進化する</p>
 
-      <!-- Description line 1: left:135(=111+24), top:373(=183.52+191.38-2), 17px, #2563eb -->
-      <p style="position:absolute;left:135px;top:373px;
+      <!-- Description line 1 -->
+      <p class="new-sr" data-delay="440"
+         style="position:absolute;left:135px;top:373px;
                 font-size:17px;font-weight:700;color:#2563eb;
                 line-height:33.15px;white-space:nowrap;">さまざまなモデルの生成結果を比較、検討するサービスにとどまらず、</p>
 
-      <!-- Description line 2: top:373+31.15=404px -->
-      <p style="position:absolute;left:135px;top:404px;
+      <!-- Description line 2 -->
+      <p class="new-sr" data-delay="540"
+         style="position:absolute;left:135px;top:404px;
                 font-size:17px;font-weight:700;color:#2563eb;
                 line-height:33.15px;white-space:nowrap;">さらにAI業務を加速、より使いやすくするためのシステムをリリースしました。</p>
 
@@ -207,84 +243,79 @@
   </section>
 
   <!-- ============================================================
-       VS section — exact Figma canvas (1512×620), scaled by JS
+       VS section — exact Figma canvas (1512×800), scaled by JS
        ============================================================ -->
   <section class="vs-section" id="vs">
     <div class="vs-section__canvas" id="vsCanvas">
 
-      <!-- Blue area (586px tall, same width) -->
-      <div style="position:absolute;left:0;top:0;width:1512px;height:586px;background:#2563eb;overflow:hidden;">
+      <!-- Blue area — inset 60px top/bottom within 900px canvas -->
+      <div style="position:absolute;left:0;top:60px;width:1512px;height:720px;background:#2563eb;overflow:hidden;">
 
-        <!-- White card: left:92, top:161.63, w:518, h:406, rounded:14, shadow -->
-        <div style="position:absolute;left:92px;top:161.63px;width:518px;height:406px;
-                    background:#fff;border-radius:14px;
-                    box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);"></div>
-
-        <!-- Badge group: left:88, top:43.63, w:340, h:85 -->
-
-        <!-- "新機能 - 01": top=43.63+0=43.63, left=88+24=112, white 14px -->
-        <p style="position:absolute;left:112px;top:43.63px;
+        <!-- "新機能 - 01" -->
+        <p class="fi-ltr" data-delay="0"
+           style="position:absolute;left:190px;top:90px;
                   font-size:14px;font-weight:700;color:#fff;
                   line-height:23.8px;white-space:nowrap;">新機能 - 01</p>
 
-        <!-- Separator line 39: left=88+4=92, top=43.63+14=57.63, w=12px, h=1px -->
-        <div style="position:absolute;left:92px;top:57.63px;width:12px;height:1px;background:#fff;"></div>
-        <!-- Separator line 40: left=88+102=190, top=57.63, w=13px, h=1px -->
-        <div style="position:absolute;left:190px;top:57.63px;width:13px;height:1px;background:#fff;"></div>
+        <!-- Separator line left -->
+        <div class="fi-ltr" data-delay="0" style="position:absolute;left:170px;top:104px;width:12px;height:1px;background:#fff;"></div>
+        <!-- Separator line right -->
+        <div class="fi-ltr" data-delay="0" style="position:absolute;left:268px;top:104px;width:13px;height:1px;background:#fff;"></div>
 
-        <!-- White bg rect: top=43.63+26=69.63, left=88+0=88, w=336px(340-4), h=54px(85-26-5), rounded:8 -->
-        <div style="position:absolute;left:88px;top:69.63px;width:336px;height:54px;
+        <!-- White bg rect for badge -->
+        <div class="fi-ltr" data-delay="80"
+             style="position:absolute;left:166px;top:116px;width:336px;height:54px;
                     background:#fff;border-radius:8px;"></div>
-        <!-- Border overlay: top=43.63+31=74.63, left=88+4=92, w=336, h=54, 1px white border -->
-        <div style="position:absolute;left:92px;top:74.63px;width:336px;height:54px;
+        <!-- Border overlay for badge -->
+        <div class="fi-ltr" data-delay="80"
+             style="position:absolute;left:170px;top:121px;width:336px;height:54px;
                     border:1px solid rgba(255,255,255,0.9);border-radius:8px;pointer-events:none;"></div>
 
-        <!-- "VS  バーサスシステム": top=43.63+41=84.63, left=88+22=110, 30px #2563eb font-black -->
-        <p style="position:absolute;left:110px;top:69.63px;
+        <!-- "VS  バーサスシステム" -->
+        <p class="fi-ltr" data-delay="80"
+           style="position:absolute;left:188px;top:116px;
                   font-size:30px;font-weight:900;color:#2563eb;
                   line-height:54px;white-space:pre;">VS  バーサスシステム</p>
 
-        <!-- Title: left:111, top:172.63 -->
-        <!-- "生成結果" 30px + "を" 20px inline, then "比べる手間はいらない" 20px -->
-        <p style="position:absolute;left:111px;top:172.63px;
+        <!-- VS swords icon -->
+        <img src="images/vs-icon-new.svg"
+             alt="" aria-hidden="true" class="fi-ltr" data-delay="180"
+             style="position:absolute;left:240px;top:212px;width:192px;height:96px;
+                    object-fit:contain;pointer-events:none;">
+
+        <!-- White card -->
+        <div class="fi-ltr" data-delay="280"
+             style="position:absolute;left:110px;top:351px;width:456px;height:264px;
+                    background:#fff;border-radius:14px;"></div>
+
+        <!-- Title -->
+        <p class="fi-ltr" data-delay="320"
+           style="position:absolute;left:132px;top:377px;
                   font-size:30px;font-weight:700;color:#2563eb;
                   line-height:1.4;letter-spacing:1px;white-space:nowrap;"><span>生成結果</span><span style="font-size:20px;">を</span></p>
-        <p style="position:absolute;left:111px;top:214px;
+        <p class="fi-ltr" data-delay="360"
+           style="position:absolute;left:132px;top:420px;
                   font-size:20px;font-weight:700;color:#2563eb;
                   line-height:1.4;letter-spacing:1px;white-space:nowrap;">比べる手間はいらない</p>
 
-        <!-- Description: left:111, top:266.63 -->
-        <p style="position:absolute;left:111px;top:266.63px;
+        <!-- Description -->
+        <p class="fi-ltr" data-delay="400"
+           style="position:absolute;left:132px;top:448px;
                   font-size:16px;font-weight:700;color:#2563eb;
-                  line-height:normal;letter-spacing:1px;white-space:nowrap;">プロンプトで結果を出力後、各生成結果が自らお互いに戦い、</p>
-        <p style="position:absolute;left:111px;top:290px;
-                  font-size:16px;font-weight:700;color:#2563eb;
-                  line-height:normal;letter-spacing:1px;white-space:nowrap;">自動で最も強く正確な生成結果がピックアップされます。</p>
+                  line-height:1.6;letter-spacing:1px;width:409px;">プロンプトで結果を出力後、各生成結果が自らお互いに戦い、自動で最も強く正確な生成結果がピックアップされます。</p>
 
-        <!-- VS swords icon (img1): centered in card (card left:89 w:607 → center at 392.5, icon w:282 → left:252) -->
-        <img src="images/b9791103-8dd1-4199-998b-a4f79e11c7b3.svg"
-             alt="" aria-hidden="true"
-             style="position:absolute;left:252px;top:369px;width:282px;height:140px;
-                    object-fit:contain;pointer-events:none;">
+        <!-- Large image -->
+        <div class="fi-ltr" data-delay="200"
+             style="position:absolute;left:821px;top:252px;width:586px;height:335px;
+                    box-sizing:border-box;border:11px solid #fff;border-radius:14px;overflow:hidden;">
+          <img src="images/55da4f47-424f-4c93-b6dc-98bb379e1dbb.png"
+               alt="バーサスシステムイメージ"
+               style="width:100%;height:100%;object-fit:cover;">
+        </div>
 
-        <!-- Large image (imgRectangle162): left:943, top:220, w:480, h:313, rounded:14 -->
-        <img src="images/55da4f47-424f-4c93-b6dc-98bb379e1dbb.png"
-             alt="バーサスシステムイメージ"
-             style="position:absolute;left:943px;top:220px;width:480px;height:313px;
-                    object-fit:cover;border-radius:14px;
-                    box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);">
-
-        <!-- Square image (imgRectangle229): left:682, top:305, size:210, rounded:8 -->
-        <img src="images/7616f81c-3752-4307-bc10-547c175f853d.png"
-             alt=""
-             style="position:absolute;left:682px;top:305px;width:210px;height:210px;
-                    object-fit:cover;border-radius:8px;">
-
-        <!-- "VS" large deco text image (imgVs):
-             container left:1251.38, top:-39.5 → imgVs inside at left:-39.68, top:38.09
-             → absolute: left=1211.7, top=-1.4, w:296.8, h:199.68 -->
+        <!-- "VS" large deco text image -->
         <img src="images/d63fa4c7-bd9c-4a28-b916-178e44e68e5f.svg"
-             alt="" aria-hidden="true"
+             alt="" aria-hidden="true" class="fi-ltr" data-delay="120"
              style="position:absolute;left:1212px;top:-1px;width:297px;height:200px;
                     object-fit:contain;pointer-events:none;">
 
@@ -299,90 +330,71 @@
   <section class="emo-section" id="emo">
     <div class="emo-section__canvas" id="emoCanvas">
 
-      <!-- "EMO" large deco text: left:-23, top:-53(=-74+21), 227px, #2563eb, tracking:-13px -->
+      <!-- "EMO" large deco text: left:-23, top:-33, 227px, #2563eb, tracking:-13px -->
       <p aria-hidden="true"
-         style="position:absolute;left:-23px;top:-53px;
+         style="position:absolute;left:-23px;top:-33px;
                 font-size:227px;font-weight:700;color:#2563eb;
                 letter-spacing:-13px;line-height:260px;
                 white-space:nowrap;pointer-events:none;user-select:none;">EMO</p>
 
-      <!-- Section label badge: "新機能 - 01" + "エモーショナルシステム" -->
-      <!-- "新機能 - 01": above blue card right side, #2563eb, 14px -->
-      <p style="position:absolute;left:882px;top:23px;
+      <!-- Section label badge -->
+      <p class="fi-rtl" data-delay="0"
+         style="position:absolute;left:910px;top:60px;
                 font-size:14px;font-weight:700;color:#2563eb;
                 line-height:23.8px;white-space:nowrap;z-index:2;">新機能 - 01</p>
-      <!-- Separator line left -->
-      <div style="position:absolute;left:862px;top:37px;width:12px;height:1px;background:#2563eb;z-index:2;"></div>
-      <!-- Separator line right -->
-      <div style="position:absolute;left:964px;top:37px;width:13px;height:1px;background:#2563eb;z-index:2;"></div>
-      <!-- Blue bg rect for "エモーショナルシステム" -->
-      <div style="position:absolute;left:858px;top:47px;width:376px;height:54px;
+      <div class="fi-rtl" data-delay="0" style="position:absolute;left:887px;top:74px;width:13px;height:1px;background:#2563eb;z-index:2;"></div>
+      <div class="fi-rtl" data-delay="0" style="position:absolute;left:997px;top:74px;width:14px;height:1px;background:#2563eb;z-index:2;"></div>
+      <div class="fi-rtl" data-delay="80"
+           style="position:absolute;left:883px;top:86px;width:375px;height:54px;
                   background:#2563eb;border-radius:8px;z-index:2;"></div>
-      <!-- Border overlay -->
-      <div style="position:absolute;left:862px;top:52px;width:376px;height:54px;
+      <div class="fi-rtl" data-delay="80"
+           style="position:absolute;left:887px;top:91px;width:375px;height:54px;
                   border:1px solid #2563eb;border-radius:8px;pointer-events:none;z-index:3;"></div>
-      <!-- "エモーショナルシステム": 30px white font-black -->
-      <p style="position:absolute;left:878px;top:47px;
+      <p class="fi-rtl" data-delay="80"
+         style="position:absolute;left:900px;top:86px;
                 font-size:30px;font-weight:900;color:#fff;
                 line-height:54px;white-space:nowrap;z-index:4;">エモーショナルシステム</p>
 
-      <!-- Blue card: left:847, top:123, w:467, h:446, rounded:17, shadow -->
-      <div style="position:absolute;left:847px;top:123px;width:467px;height:446px;
-                  background:#2563eb;border-radius:17px;
-                  box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);"></div>
+      <!-- Icon -->
+      <img src="images/emo-icon.svg" alt="" aria-hidden="true" class="fi-rtl" data-delay="180"
+           style="position:absolute;left:945px;top:180px;width:256px;height:187px;
+                  object-fit:contain;z-index:2;">
 
-      <!-- Title on blue card: left:893, top:151, white, inline mix of sizes -->
-      <p style="position:absolute;left:893px;top:151px;
+      <!-- Blue card -->
+      <div class="fi-rtl" data-delay="280"
+           style="position:absolute;left:846px;top:402px;width:467px;height:308px;
+                  background:#2563eb;border-radius:17px;"></div>
+
+      <!-- Title on blue card -->
+      <p class="fi-rtl" data-delay="320"
+         style="position:absolute;left:887px;top:451px;
                 font-weight:700;color:#fff;letter-spacing:1px;
-                white-space:nowrap;line-height:normal;">
+                white-space:nowrap;line-height:normal;z-index:2;">
         <span style="font-size:20px;">あなたの期待と</span><span style="font-size:30px;">気持ちに応える</span><span style="font-size:20px;">AI</span>
       </p>
 
-      <!-- Description: left:897, top:207, 16px white, 3 lines -->
-      <p style="position:absolute;left:897px;top:207px;
+      <!-- Description -->
+      <p class="fi-rtl" data-delay="360"
+         style="position:absolute;left:887px;top:508px;
                 font-size:16px;font-weight:700;color:#fff;
-                letter-spacing:1px;line-height:normal;white-space:nowrap;">あなたのメンタル状況とリンクすることで</p>
-      <p style="position:absolute;left:897px;top:231px;
+                letter-spacing:1px;line-height:normal;white-space:nowrap;z-index:2;">あなたのメンタル状況とリンクすることで</p>
+      <p class="fi-rtl" data-delay="400"
+         style="position:absolute;left:887px;top:532px;
                 font-size:16px;font-weight:700;color:#fff;
-                letter-spacing:1px;line-height:normal;white-space:nowrap;">調子のいい時は精度が高く、落ち込んでいる時は</p>
-      <p style="position:absolute;left:897px;top:255px;
+                letter-spacing:1px;line-height:normal;white-space:nowrap;z-index:2;">調子のいい時は精度が高く、落ち込んでいる時は</p>
+      <p class="fi-rtl" data-delay="440"
+         style="position:absolute;left:887px;top:556px;
                 font-size:16px;font-weight:700;color:#fff;
-                letter-spacing:1px;line-height:normal;white-space:nowrap;">AIのメッセージがあなたを勇気づけます。</p>
+                letter-spacing:1px;line-height:normal;white-space:nowrap;z-index:2;">AIのメッセージがあなたを勇気づけます。</p>
 
-      <!-- imgRectangle195 (pink UI): left:452, top:165, w:292, h:246, opacity:0.9, rounded:8 -->
-      <img src="images/6b658d40-bc9b-4c8a-ab2b-c3f0e38d9f72.png"
-           alt="" aria-hidden="true"
-           style="position:absolute;left:452px;top:165px;width:292px;height:246px;
-                  object-fit:cover;border-radius:8px;opacity:0.9;">
-
-      <!-- Main photo (imgRectangle161): left:88, top:226, w:411, h:354, rounded:8, shadow -->
-      <div style="position:absolute;left:88px;top:226px;width:411px;height:354px;
-                  border-radius:8px;box-shadow:10px 14px 0px 0px rgba(0,0,0,0.25);
-                  background:#d9d9d9;overflow:hidden;">
-        <img src="images/0fa5d3fb-c3b0-473a-8294-f7cd9660e409.png"
+      <!-- Image -->
+      <div class="fi-rtl" data-delay="160"
+           style="position:absolute;left:103px;top:254px;width:653px;height:411px;
+                  border-radius:8px;border:11px solid #2563eb;overflow:hidden;
+                  box-shadow:10px 14px 0px 0px rgba(0,0,0,0.25);">
+        <img src="images/emo-main-new.png"
              alt="EMO機能イメージ"
-             style="width:100%;height:100%;object-fit:cover;border-radius:8px;">
-      </div>
-
-      <!-- Icon group: container left:918, top:357, w:352, h:108, overflow:hidden -->
-      <!-- imgGroup (left icon): ~left:918, top:358, w:125, h:96 -->
-      <div style="position:absolute;left:918px;top:357px;width:352px;height:108px;overflow:hidden;">
-        <!-- imgGroup: inset[4.79%/64.55%/6.55%/0] → top:5.17, left:0, w:125, h:95.76 + inner extends 4.7% -->
-        <div style="position:absolute;top:5.17px;left:0;width:125.2px;height:95.76px;overflow:visible;">
-          <img src="images/3ec52fcc-01ba-4ce9-bdfc-43d7457bb3f1.svg"
-               alt="" aria-hidden="true"
-               style="position:absolute;top:-4.5px;left:0;width:100%;height:calc(100% + 9px);object-fit:contain;">
-        </div>
-        <!-- imgGroup1 (sync arrows): inset[3%/0.92%/3%/70.16%] → top:3.24, left:246.96, w:101.8, h:101.52 + extends 5.42% -->
-        <div style="position:absolute;top:3.24px;left:246.96px;width:101.8px;height:101.52px;overflow:visible;">
-          <img src="images/df249469-abc0-4325-b07f-94af33e47083.svg"
-               alt="" aria-hidden="true"
-               style="position:absolute;top:-5.5px;left:-5.5px;width:calc(100% + 11px);height:calc(100% + 11px);object-fit:contain;">
-        </div>
-        <!-- imgGroup2 (center icon): inset[19.09%/38.39%/10.36%/40.49%] → top:20.62, left:142.52, w:74.35, h:76.19 -->
-        <img src="images/c260ffc6-c6ef-4292-96d8-4fd943c4f200.svg"
-             alt="" aria-hidden="true"
-             style="position:absolute;top:20.62px;left:142.52px;width:74.35px;height:76.19px;object-fit:contain;">
+             style="width:100%;height:100%;object-fit:cover;">
       </div>
 
     </div><!-- /.emo-section__canvas -->
@@ -399,27 +411,37 @@
            alt="" aria-hidden="true"
            style="position:absolute;left:715px;top:-9px;width:797.076px;height:199.68px;object-fit:contain;pointer-events:none;">
 
-      <!-- White card -->
-      <div style="position:absolute;left:89px;top:148px;width:607px;height:433px;
-                  background:#fff;border-radius:14px;box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);">
-      </div>
-
-      <!-- Section label badge: "新機能 - 01" + "エンジェル作成機能" (white bg on blue section) -->
-      <p style="position:absolute;left:112px;top:23px;
+      <!-- Section label badge -->
+      <p class="fi-ltr" data-delay="0"
+         style="position:absolute;left:263px;top:150px;
                 font-size:14px;font-weight:700;color:#fff;
                 line-height:23.8px;white-space:nowrap;z-index:2;">新機能 - 01</p>
-      <div style="position:absolute;left:92px;top:37px;width:12px;height:1px;background:#fff;z-index:2;"></div>
-      <div style="position:absolute;left:190px;top:37px;width:13px;height:1px;background:#fff;z-index:2;"></div>
-      <div style="position:absolute;left:88px;top:47px;width:318px;height:54px;
+      <div class="fi-ltr" data-delay="0" style="position:absolute;left:241px;top:164px;width:12px;height:1px;background:#fff;z-index:2;"></div>
+      <div class="fi-ltr" data-delay="0" style="position:absolute;left:350px;top:164px;width:13px;height:1px;background:#fff;z-index:2;"></div>
+      <div class="fi-ltr" data-delay="80"
+           style="position:absolute;left:233px;top:174px;width:318px;height:54px;
                   background:#fff;border-radius:8px;z-index:2;"></div>
-      <div style="position:absolute;left:92px;top:52px;width:318px;height:54px;
+      <div class="fi-ltr" data-delay="80"
+           style="position:absolute;left:237px;top:179px;width:318px;height:54px;
                   border:1px solid rgba(255,255,255,0.9);border-radius:8px;pointer-events:none;z-index:3;"></div>
-      <p style="position:absolute;left:108px;top:47px;
+      <p class="fi-ltr" data-delay="80"
+         style="position:absolute;left:253px;top:174px;
                 font-size:30px;font-weight:900;color:#2563eb;
                 line-height:54px;white-space:nowrap;z-index:4;">エンジェル作成機能</p>
 
-      <!-- Title: エンジェルそれはエージェントを超えたエージェント機能 -->
-      <div style="position:absolute;left:114px;top:168px;
+      <!-- Angel icon -->
+      <img src="images/angel-icon-new.svg"
+           alt="" aria-hidden="true" class="fi-ltr" data-delay="180"
+           style="position:absolute;left:285px;top:279px;width:214px;height:76px;object-fit:contain;pointer-events:none;">
+
+      <!-- White card -->
+      <div class="fi-ltr" data-delay="280"
+           style="position:absolute;left:151px;top:399px;width:483px;height:309px;
+                  background:#fff;border-radius:14px;"></div>
+
+      <!-- Title -->
+      <div class="fi-ltr" data-delay="320"
+           style="position:absolute;left:209px;top:425px;
                   font-size:0;font-weight:700;color:#2563eb;letter-spacing:1px;white-space:nowrap;">
         <p style="margin:0;white-space:nowrap;">
           <span style="font-size:30px;line-height:38px;">エンジェル</span><span style="font-size:20px;line-height:26px;letter-spacing:1px;">それはエージェント</span>
@@ -428,39 +450,33 @@
       </div>
 
       <!-- Description lines -->
-      <p style="position:absolute;left:114px;top:238px;
+      <p class="fi-ltr" data-delay="360"
+         style="position:absolute;left:209px;top:515px;width:352px;
                 font-size:16px;font-weight:700;color:#2563eb;letter-spacing:1px;
-                white-space:nowrap;line-height:normal;margin:0;">
+                line-height:normal;margin:0;">
         エージェントとは違い、一度作成すると裏側であなたを定期的にサポート
       </p>
-      <p style="position:absolute;left:114px;top:274px;width:560px;
+      <p class="fi-ltr" data-delay="400"
+         style="position:absolute;left:209px;top:554px;width:352px;
                 font-size:16px;font-weight:700;color:#2563eb;letter-spacing:1px;
                 line-height:normal;margin:0;">
         間違って消してしまったデータを感知して復元、上司の機嫌を考慮したメール作成
       </p>
-      <div style="position:absolute;left:114px;top:325px;width:561px;
-                  font-size:16px;font-weight:700;color:#2563eb;letter-spacing:1px;
-                  line-height:normal;">
-        <p style="margin:0 0 0 0;">検索・SNSでの話題のドラマや映画、ゲーム・アニメ作品のネタバレ防止機能など</p>
-        <p style="margin:0;">仕事以外でもあなたを見守り続けます。</p>
+      <p class="fi-ltr" data-delay="440"
+         style="position:absolute;left:209px;top:607px;width:353px;
+                font-size:16px;font-weight:700;color:#2563eb;letter-spacing:1px;
+                line-height:1.6;margin:0;">
+        検索・SNSでの話題のドラマや映画、ゲーム・アニメ作品のネタバレ防止機能など仕事以外でもあなたを見守り続けます。
+      </p>
+
+      <!-- Main image -->
+      <div class="fi-ltr" data-delay="200"
+           style="position:absolute;left:783px;top:328px;width:628px;height:363px;
+                  box-sizing:border-box;border:11px solid #fff;border-radius:14px;overflow:hidden;">
+        <img src="images/angel-feature-updated.png"
+             alt="エンジェル機能UI"
+             style="width:100%;height:100%;object-fit:cover;">
       </div>
-
-      <!-- Angel logo img: centered in card (card left:89 w:607 → center at 392.5, icon w:280.55 → left:252) -->
-      <img src="images/67668a4d-b9cc-44fb-8367-7c3145b42414.svg"
-           alt="" aria-hidden="true"
-           style="position:absolute;left:252px;top:428px;width:280.55px;height:99.81px;object-fit:contain;">
-
-      <!-- Small square photo (Rectangle163) -->
-      <img src="images/f4a35acb-6d10-4d87-ad86-57b34cdd9338.png"
-           alt="" aria-hidden="true"
-           style="position:absolute;left:756px;top:354px;width:354px;height:298px;
-                  object-fit:cover;border-radius:10px;">
-
-      <!-- Main tall photo (Rectangle195) -->
-      <img src="images/b88650c4-1adc-4dc8-b13d-cd9d1e21f6b1.png"
-           alt="エンジェル機能UI"
-           style="position:absolute;left:1040px;top:221px;width:423px;height:366px;
-                  object-fit:cover;border-radius:14px;box-shadow:20px 11px 0px 0px rgba(0,0,0,0.25);">
 
     </div>
   </section>
@@ -510,7 +526,7 @@
 
   <!-- System unlock bar -->
   <div class="unlock-bar">
-    <p class="unlock-bar__text">System.... Un Lock !</p>
+    <p class="unlock-bar__text" id="unlockText" data-text="System.... Un Lock !" aria-label="System.... Un Lock !"></p>
   </div>
 
   <!-- ============================================================
@@ -549,41 +565,47 @@
   <section class="omega-section" id="omega">
     <div class="omega-section__canvas" id="omegaCanvas">
 
-      <!-- ── HERO ── -->
-      <!-- Band image (updated) -->
-      <img src="images/9633d592-2497-4144-98cf-b12b25614ec5.png"
-           alt="" aria-hidden="true"
-           style="position:absolute;left:89px;top:83px;width:1335px;height:997px;
-                  object-fit:cover;pointer-events:none;">
-      <!-- Ellipse13 (8053:154): circle behind symbol mark -->
-      <img src="images/c4ba9cf7-c42a-45e7-aa15-499339fe29b7.svg"
-           alt="" aria-hidden="true"
-           style="position:absolute;left:1003px;top:407px;width:252px;height:252px;
-                  display:block;max-width:none;pointer-events:none;">
-      <!-- オメガモード banner: dark overlay + white border -->
-      <div style="position:absolute;left:89px;top:735px;width:1335px;height:232px;
-                  background:rgba(45,45,45,0.7);pointer-events:none;"></div>
-      <div style="position:absolute;left:110px;top:752px;width:1293px;height:201px;
-                  border:1px solid rgba(255,255,255,0.7);pointer-events:none;"></div>
-      <!-- オメガモード text: top:783 -->
-      <p style="position:absolute;left:581px;top:783px;font-size:57px;font-weight:900;
-                color:#fff;letter-spacing:1.2px;white-space:nowrap;">オメガモード</p>
-      <!-- Flanking lines: top:817 -->
-      <div style="position:absolute;left:479px;top:817px;width:69px;height:2px;">
-        <img src="images/45c00fdf-c4a6-4a42-bdb0-bb04d2eab7c4.svg"
-             alt="" style="width:100%;height:2px;display:block;">
+      <!-- ── HERO background (fade-in) ── -->
+      <div id="omegaHeroBg" style="position:absolute;inset:0;pointer-events:none;">
+        <!-- Band image (updated) -->
+        <img src="images/9633d592-2497-4144-98cf-b12b25614ec5.png"
+             alt="" aria-hidden="true"
+             style="position:absolute;left:89px;top:83px;width:1335px;height:997px;
+                    object-fit:cover;pointer-events:none;">
+        <!-- Ellipse13 (8053:154): circle behind symbol mark -->
+        <img src="images/c4ba9cf7-c42a-45e7-aa15-499339fe29b7.svg"
+             alt="" aria-hidden="true"
+             style="position:absolute;left:1003px;top:407px;width:252px;height:252px;
+                    display:block;max-width:none;pointer-events:none;">
       </div>
-      <div style="position:absolute;left:962px;top:817px;width:69px;height:2px;">
-        <img src="images/557fe5f2-4694-4dd7-9de0-b22c9e7edeb1.svg"
-             alt="" style="width:100%;height:2px;display:block;">
-      </div>
-      <!-- Description: top:877 -->
-      <p style="position:absolute;left:493px;top:877px;font-size:24px;font-weight:900;
-                color:#fff;letter-spacing:1.2px;white-space:nowrap;">溜まった生成ケージ消費して新たな機能を解放</p>
-      <!-- Separator -->
-      <div style="position:absolute;left:393px;top:1116px;width:399px;height:2px;">
-        <img src="images/080d1d09-b65f-45e0-a986-f78c94c88f28.svg"
-             alt="" style="width:100%;height:2px;display:block;">
+      <!-- オメガモード banner: TV power-on wrapper (all inner positions offset by -89,-735) -->
+      <div id="omegaBanner" style="position:absolute;left:89px;top:735px;width:1335px;height:232px;overflow:hidden;">
+        <!-- Dark overlay -->
+        <div style="position:absolute;left:0;top:0;width:100%;height:100%;
+                    background:rgba(45,45,45,0.7);pointer-events:none;"></div>
+        <!-- White border (offset: left:21, top:17) -->
+        <div style="position:absolute;left:21px;top:17px;width:1293px;height:201px;
+                    border:1px solid rgba(255,255,255,0.7);pointer-events:none;"></div>
+        <!-- Corner accents — Top-left -->
+        <div style="position:absolute;left:21px;top:17px;width:2px;height:26px;background:#bcbebe;pointer-events:none;"></div>
+        <div style="position:absolute;left:21px;top:17px;width:26px;height:2px;background:#d9d9d9;pointer-events:none;"></div>
+        <!-- Corner accents — Top-right -->
+        <div style="position:absolute;left:1311px;top:17px;width:2px;height:26px;background:#bcbebe;pointer-events:none;"></div>
+        <div style="position:absolute;left:1287px;top:17px;width:26px;height:2px;background:#d9d9d9;pointer-events:none;"></div>
+        <!-- Corner accents — Bottom-left -->
+        <div style="position:absolute;left:21px;top:191px;width:2px;height:26px;background:#c7cbcc;pointer-events:none;"></div>
+        <div style="position:absolute;left:21px;top:215px;width:26px;height:2px;background:#c7cbcc;pointer-events:none;"></div>
+        <!-- Corner accents — Bottom-right -->
+        <div style="position:absolute;left:1311px;top:191px;width:2px;height:26px;background:#c7cbcc;pointer-events:none;"></div>
+        <div style="position:absolute;left:1287px;top:215px;width:26px;height:2px;background:#c7cbcc;pointer-events:none;"></div>
+        <!-- オメガモード text + flanking lines -->
+        <p style="position:absolute;left:492px;top:48px;margin:0;line-height:1;font-size:57px;font-weight:900;
+                  color:#fff;letter-spacing:1.2px;white-space:nowrap;pointer-events:none;">オメガモード</p>
+        <div style="position:absolute;left:390px;top:79px;width:69px;height:2px;background:#fff;opacity:0.85;"></div>
+        <div style="position:absolute;left:873px;top:79px;width:69px;height:2px;background:#fff;opacity:0.85;"></div>
+        <!-- Description (offset: left:404, top:142) -->
+        <p style="position:absolute;left:404px;top:142px;font-size:24px;font-weight:900;
+                  color:#fff;letter-spacing:1.2px;white-space:nowrap;pointer-events:none;">溜まった生成ケージ消費して新たな機能を解放</p>
       </div>
 
       <!-- ── DARK BAR ROW (8019:72) bg:#484848 opacity:40% ── -->
@@ -598,12 +620,12 @@
       <div style="position:absolute;left:1304px;top:1544px;width:111px;height:119px;background:#484848;opacity:0.4;border-radius:4px;"></div>
 
       <!-- ── CARD 1: インフィニットジェネレーション (left:89 top:1202 w:961 h:215) ── -->
-      <div style="position:absolute;left:89px;top:1202px;width:961px;height:215px;
+      <div id="omegaCard1" style="position:absolute;left:89px;top:1202px;width:961px;height:215px;
                   background:#fff;border:1px solid #000;border-radius:8px;
                   box-shadow:10px 14px 0 rgba(255,255,255,0.25);overflow:hidden;">
-        <!-- Black header -->
+        <!-- Red header -->
         <div style="position:absolute;left:0;top:0;width:422px;height:56px;
-                    background:#000;border-radius:0 0 8px 0;">
+                    background:#c63939;border-radius:0 0 8px 0;">
           <p style="position:absolute;left:13px;top:14px;font-size:24px;font-weight:700;
                     color:#fff;letter-spacing:1.2px;white-space:nowrap;margin:0;">インフィニットジェネレーション</p>
         </div>
@@ -618,7 +640,31 @@
         <!-- Small icon (img1): left:940 top:1302 → relative: left:851, top:100, size:94 -->
         <img src="images/f0745f0c-53a1-4b8e-a642-adee4630bcbf.svg"
              alt="" aria-hidden="true"
-             style="position:absolute;left:851px;top:60px;width:94px;height:94px;object-fit:contain;">
+             style="position:absolute;left:851px;top:100px;width:94px;height:94px;object-fit:contain;">
+      </div>
+
+      <!-- ── CARD 1 side images (8089:6517 + 8089:6532) ── -->
+      <!-- image 48: 限界突破 LIMIT BREAK (border, zoomed) -->
+      <div style="position:absolute;left:1063px;top:1130px;width:320px;height:213px;
+                  border:1px solid #000;overflow:hidden;pointer-events:none;">
+        <img src="images/omega-img48.png" alt="" aria-hidden="true"
+             style="position:absolute;width:126.58%;height:126.37%;left:-15.35%;top:0;display:block;max-width:none;">
+      </div>
+      <!-- image 50b: blue floating text (rounded) -->
+      <div style="position:absolute;left:1063px;top:1413px;width:295px;height:221px;
+                  border-radius:13px;overflow:hidden;pointer-events:none;">
+        <img src="images/omega-img50b.png" alt="" aria-hidden="true"
+             style="width:100%;height:100%;object-fit:cover;border-radius:13px;display:block;">
+      </div>
+
+      <!-- ── CARD 2 side images (Rectangle163 & Rectangle164) ── -->
+      <div style="position:absolute;left:159px;top:1589px;width:227px;height:191px;border-radius:10px;overflow:hidden;pointer-events:none;">
+        <img src="images/omega-rect163.png" alt="" aria-hidden="true"
+             style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+      <div style="position:absolute;left:216px;top:1840px;width:196px;height:165px;border-radius:10px;overflow:hidden;pointer-events:none;">
+        <img src="images/omega-rect164.png" alt="" aria-hidden="true"
+             style="width:100%;height:100%;object-fit:cover;display:block;">
       </div>
 
       <!-- ── WHITE BAR ROW 1 (8019:82) bg:white opacity:40% ── -->
@@ -633,11 +679,11 @@
       <div style="position:absolute;left:1270px;top:1806px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
 
       <!-- ── CARD 2: トランセンデンスオース (left:460 top:1703 w:961 h:243) ── -->
-      <div style="position:absolute;left:460px;top:1703px;width:961px;height:243px;
+      <div id="omegaCard2" style="position:absolute;left:460px;top:1703px;width:961px;height:243px;
                   background:#fff;border:1px solid #000;border-radius:8px;
                   box-shadow:10px 14px 0 rgba(255,255,255,0.25);overflow:hidden;">
         <div style="position:absolute;left:0;top:0;width:422px;height:56px;
-                    background:#000;border-radius:0 0 8px 0;">
+                    background:#c63939;border-radius:0 0 8px 0;">
           <p style="position:absolute;left:13px;top:14px;font-size:24px;font-weight:700;
                     color:#fff;letter-spacing:1.2px;white-space:nowrap;margin:0;">トランセンデンスオース</p>
         </div>
@@ -655,6 +701,20 @@
              style="position:absolute;left:844px;top:122px;width:102px;height:102px;object-fit:contain;">
       </div>
 
+      <!-- ── CARD 3 side image (Image50) ── -->
+      <div style="position:absolute;left:1111px;top:2012px;width:262px;height:196px;overflow:hidden;pointer-events:none;">
+        <img src="images/omega-img50.png" alt="" aria-hidden="true"
+             style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+
+      <!-- ── CARD 3 additional side image (8089:6519) ── -->
+      <!-- image 49: 報道ネットワーク (news broadcast for future prediction) -->
+      <div style="position:absolute;left:1063px;top:2280px;width:325px;height:244px;
+                  overflow:hidden;pointer-events:none;">
+        <img src="images/omega-img49.png" alt="" aria-hidden="true"
+             style="width:100%;height:100%;object-fit:cover;display:block;">
+      </div>
+
       <!-- ── WHITE BAR ROW 2 (8019:92) bg:white opacity:40% ── -->
       <div style="position:absolute;left:110px;top:2384px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
       <div style="position:absolute;left:293px;top:2483px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
@@ -667,11 +727,11 @@
       <div style="position:absolute;left:1291px;top:2384px;width:111px;height:119px;background:#fff;opacity:0.4;border-radius:4px;"></div>
 
       <!-- ── CARD 3: フューチャープレデクション (left:89 top:2091 w:961 h:243) ── -->
-      <div style="position:absolute;left:89px;top:2091px;width:961px;height:243px;
+      <div id="omegaCard3" style="position:absolute;left:89px;top:2091px;width:961px;height:243px;
                   background:#fff;border:1px solid #000;border-radius:8px;
                   box-shadow:10px 14px 0 rgba(255,255,255,0.25);overflow:hidden;">
         <div style="position:absolute;left:0;top:0;width:422px;height:56px;
-                    background:#000;border-radius:0 0 8px 0;">
+                    background:#c63939;border-radius:0 0 8px 0;">
           <p style="position:absolute;left:13px;top:14px;font-size:24px;font-weight:700;
                     color:#fff;letter-spacing:1.2px;white-space:nowrap;margin:0;">フューチャー プレデクション</p>
         </div>
@@ -689,6 +749,8 @@
              style="position:absolute;left:838px;top:122px;width:107px;height:107px;object-fit:contain;">
       </div>
 
+      <!-- ── HERO foreground: union rings + OMEGA text + symbol (fade-in) ── -->
+      <div id="omegaHeroFg" style="position:absolute;inset:0;pointer-events:none;">
       <!-- ── UNION RINGS + OMEGA TEXT + LIBRA ICON (top layer) ── -->
       <!-- Union rings: outer 1102×335 flex, inner 335×1102 rotate(-90deg) -->
       <div style="position:absolute;left:205px;top:355px;width:1102px;height:335px;
@@ -708,13 +770,42 @@
                 font-family:'Rubik Glitch',cursive;font-style:normal;
                 font-size:220px;color:#f3e300;opacity:0.8;
                 letter-spacing:1.2px;line-height:220px;white-space:nowrap;pointer-events:none;">OMEGA</p>
-      <!-- OMEGA text — Layer 3: cream (Specter Black Italic — clean, non-glitch) -->
-      <p style="position:absolute;left:181px;top:420px;
-                font-family:'Specter','Impact','Arial Black',sans-serif;font-style:italic;font-weight:900;
-                font-size:220px;background:#fbffde;
-                -webkit-background-clip:text;-webkit-text-fill-color:transparent;
-                background-clip:text;
-                letter-spacing:-8.8px;line-height:220px;white-space:nowrap;pointer-events:none;">OMEGA</p>
+      <!-- OMEGA outline vectors (8089:6710) — アウトライン化 -->
+      <img src="images/omega-vector-5.png" alt="" aria-hidden="true"
+           style="position:absolute;left:194px;top:447.8px;width:165px;height:158.4px;display:block;max-width:none;pointer-events:none;">
+      <img src="images/omega-vector-4.png" alt="" aria-hidden="true"
+           style="position:absolute;left:350px;top:450px;width:216.26px;height:154px;display:block;max-width:none;pointer-events:none;">
+      <img src="images/omega-vector-3.png" alt="" aria-hidden="true"
+           style="position:absolute;left:544px;top:450px;width:154.66px;height:154px;display:block;max-width:none;pointer-events:none;">
+      <img src="images/omega-vector-2.png" alt="" aria-hidden="true"
+           style="position:absolute;left:684px;top:448.46px;width:159.28px;height:157.52px;display:block;max-width:none;pointer-events:none;">
+      <img src="images/omega-vector-1.png" alt="" aria-hidden="true"
+           style="position:absolute;left:812px;top:450px;width:170.5px;height:154px;display:block;max-width:none;pointer-events:none;">
+      <!-- OMEGA Stroke (8089:6704) — inline SVG for mix-blend-mode support -->
+      <svg preserveAspectRatio="none" overflow="visible" fill="none" xmlns="http://www.w3.org/2000/svg"
+           viewBox="0 0 791.19 160.401"
+           aria-hidden="true"
+           style="position:absolute;left:193px;top:446.8px;width:791.191px;height:160.401px;display:block;max-width:none;pointer-events:none;">
+        <g id="OMEGA-Stroke">
+          <g filter="url(#omegaF0)"><path d="M775.59 2.2002L791.19 158.2H742.526L740.327 132.46H687.468L671.848 158.2H617.714L722.011 2.2002H775.59ZM722.545 3.2002L619.585 157.2H671.285L686.905 131.46H741.245L743.445 157.2H790.085L774.685 3.2002H722.545ZM738.385 98.2402H707.365L734.425 53.5801L738.385 98.2402ZM709.14 97.2402H737.292L733.698 56.709L709.14 97.2402Z" fill="url(#omegaG0)" style="mix-blend-mode:darken"/></g>
+          <g filter="url(#omegaF1)"><path d="M540.569 89.6602C540.569 66.1202 556.629 45.4405 589.849 45.4404L590.624 45.4443C606.932 45.6201 625.276 51.3248 639.569 61.7197L650.569 18.6006C635.193 7.77242 613.635 1.84652 590.721 1.66406L589.629 1.66016C527.149 1.66016 491.289 44.7802 491.289 91.2002L491.295 92.2275C491.804 135.232 524.341 158.807 568.339 159.176L569.389 159.181C589.188 159.181 605.029 154.341 620.648 148.181L640.669 72.5H576.429L568.069 105.28H592.929L588.749 120.46C584.569 121.34 580.169 121.78 576.209 121.78V120.78C579.913 120.78 584.015 120.386 587.947 119.602L591.616 106.28H566.782L575.652 71.5H641.968L621.486 148.925L621.016 149.11C605.341 155.292 589.367 160.181 569.389 160.181C546.781 160.181 527.011 154.141 512.872 142.461C498.71 130.762 490.289 113.475 490.289 91.2002C490.289 44.2171 526.608 0.660156 589.629 0.660156C613.099 0.660161 635.316 6.63518 651.145 17.7822L651.708 18.1797L640.173 63.3965L638.98 62.5293C624.635 52.0963 606.142 46.4404 589.849 46.4404C573.452 46.4405 561.403 51.539 553.456 59.4326C545.504 67.3315 541.569 78.1176 541.569 89.6602L541.579 90.5986C541.798 100.222 545.395 107.646 551.286 112.718C557.387 117.97 566.045 120.78 576.209 120.78V121.78L575.244 121.771C555.386 121.426 541.031 110.377 540.58 90.623L540.569 89.6602Z" fill="url(#omegaG1)" style="mix-blend-mode:darken"/></g>
+          <g filter="url(#omegaF2)"><path d="M507.47 2.2002L497.295 43.3604H430.186L425.206 62.4805H485.247L475.956 100.34H415.889L410.899 119.9H478.431L468.914 158.2H350.251L389.251 2.2002H507.47ZM390.032 3.2002L351.532 157.2H468.132L477.152 120.9H409.612L415.112 99.3398H475.172L483.972 63.4805H423.912L429.412 42.3604H496.512L506.192 3.2002H390.032Z" fill="url(#omegaG2)" style="mix-blend-mode:darken"/></g>
+          <g filter="url(#omegaF3)"><path d="M244.411 2.2002L244.675 2.7959L268.913 57.71L319.438 2.2002H375.061L336.061 158.2H289.778L310.77 74.457L310.771 74.4512L311.81 70.4111L254.245 129.902L225.134 67.1514L223.611 73.3975L223.61 73.4014L202.521 158.2H156.239L195.239 2.2002H244.411ZM196.02 3.2002L157.52 157.2H201.739L222.64 73.1602L224.84 64.1406L254.54 128.16L313.72 67L311.739 74.7002L291.06 157.2H335.279L373.779 3.2002H319.88L268.62 59.5205L243.76 3.2002H196.02Z" fill="url(#omegaG3)" style="mix-blend-mode:darken"/></g>
+          <g filter="url(#omegaF4)"><path d="M166 73.3799C166 28.9401 132.34 1 89.2197 1C38.3998 1.00012 1 39.2806 1 87.0205L1.00586 88.0586C1.52613 131.898 34.9971 159.619 77.7803 159.4C128.203 159.4 165.415 121.716 165.993 74.4971L166 73.3799ZM115.5 77.3398C115.5 67.884 112.387 60.1698 107.228 54.8252C102.069 49.4817 94.8022 46.4405 86.3604 46.4404C66.1068 46.4404 51.5 63.7136 51.5 83.9404L51.5088 84.8213C51.6962 93.8759 54.7732 101.278 59.7715 106.456C64.9299 111.8 72.1978 114.84 80.6396 114.84V115.84C63.5314 115.84 50.8994 103.689 50.5088 84.8428L50.5 83.9404C50.5 63.2604 65.4604 45.4404 86.3604 45.4404L87.1709 45.4492C104.135 45.8334 116.5 58.2824 116.5 77.3398L116.488 78.3271C116.011 98.9989 100.563 115.84 80.6396 115.84V114.84C100.252 114.84 115.5 97.9864 115.5 77.3398ZM166.993 74.5107C166.408 122.284 128.743 160.397 77.7842 160.399C56.0072 160.51 36.5604 153.455 22.5469 140.697C8.52391 127.931 7.92847e-05 109.508 0 87.0205C0 38.7184 37.8575 0.000121554 89.2197 0C110.993 0 130.439 7.05596 144.452 19.7852C158.475 32.5234 167 50.8915 167 73.3799L166.993 74.5107Z" fill="url(#omegaG4)" style="mix-blend-mode:darken"/></g>
+        </g>
+        <defs>
+          <filter id="omegaF0" x="617.714" y="2.2002" width="173.477" height="156" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feTurbulence type="fractalNoise" baseFrequency="0.5 0.5" stitchTiles="stitch" numOctaves="3" result="noise" seed="7414"/><feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/><feComponentTransfer in="alphaNoise" result="coloredNoise1"><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"/></feComponentTransfer><feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/><feFlood flood-color="rgba(195,26,26,0.05)" result="color1Flood"/><feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/><feMerge><feMergeNode in="shape"/><feMergeNode in="color1"/></feMerge></filter>
+          <filter id="omegaF1" x="490.289" y="0.660156" width="161.419" height="159.521" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feTurbulence type="fractalNoise" baseFrequency="0.5 0.5" stitchTiles="stitch" numOctaves="3" result="noise" seed="7414"/><feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/><feComponentTransfer in="alphaNoise" result="coloredNoise1"><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"/></feComponentTransfer><feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/><feFlood flood-color="rgba(195,26,26,0.05)" result="color1Flood"/><feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/><feMerge><feMergeNode in="shape"/><feMergeNode in="color1"/></feMerge></filter>
+          <filter id="omegaF2" x="350.251" y="2.2002" width="157.219" height="156" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feTurbulence type="fractalNoise" baseFrequency="0.5 0.5" stitchTiles="stitch" numOctaves="3" result="noise" seed="7414"/><feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/><feComponentTransfer in="alphaNoise" result="coloredNoise1"><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"/></feComponentTransfer><feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/><feFlood flood-color="rgba(195,26,26,0.05)" result="color1Flood"/><feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/><feMerge><feMergeNode in="shape"/><feMergeNode in="color1"/></feMerge></filter>
+          <filter id="omegaF3" x="156.239" y="2.2002" width="218.821" height="156" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feTurbulence type="fractalNoise" baseFrequency="0.5 0.5" stitchTiles="stitch" numOctaves="3" result="noise" seed="7414"/><feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/><feComponentTransfer in="alphaNoise" result="coloredNoise1"><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"/></feComponentTransfer><feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/><feFlood flood-color="rgba(195,26,26,0.05)" result="color1Flood"/><feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/><feMerge><feMergeNode in="shape"/><feMergeNode in="color1"/></feMerge></filter>
+          <filter id="omegaF4" x="0" y="0" width="167" height="160.401" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/><feTurbulence type="fractalNoise" baseFrequency="0.5 0.5" stitchTiles="stitch" numOctaves="3" result="noise" seed="7414"/><feColorMatrix in="noise" type="luminanceToAlpha" result="alphaNoise"/><feComponentTransfer in="alphaNoise" result="coloredNoise1"><feFuncA type="discrete" tableValues="0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0"/></feComponentTransfer><feComposite operator="in" in2="shape" in="coloredNoise1" result="noise1Clipped"/><feFlood flood-color="rgba(195,26,26,0.05)" result="color1Flood"/><feComposite operator="in" in2="noise1Clipped" in="color1Flood" result="color1"/><feMerge><feMergeNode in="shape"/><feMergeNode in="color1"/></feMerge></filter>
+          <linearGradient id="omegaG0" x1="395.96" y1="-26.7998" x2="395.96" y2="193.2" gradientUnits="userSpaceOnUse"><stop stop-color="#CFCEC1"/><stop offset="1" stop-color="#696962"/></linearGradient>
+          <linearGradient id="omegaG1" x1="395.96" y1="-26.7998" x2="395.96" y2="193.2" gradientUnits="userSpaceOnUse"><stop stop-color="#CFCEC1"/><stop offset="1" stop-color="#696962"/></linearGradient>
+          <linearGradient id="omegaG2" x1="395.96" y1="-26.7998" x2="395.96" y2="193.2" gradientUnits="userSpaceOnUse"><stop stop-color="#CFCEC1"/><stop offset="1" stop-color="#696962"/></linearGradient>
+          <linearGradient id="omegaG3" x1="395.96" y1="-26.7998" x2="395.96" y2="193.2" gradientUnits="userSpaceOnUse"><stop stop-color="#CFCEC1"/><stop offset="1" stop-color="#696962"/></linearGradient>
+          <linearGradient id="omegaG4" x1="395.96" y1="-26.7998" x2="395.96" y2="193.2" gradientUnits="userSpaceOnUse"><stop stop-color="#CFCEC1"/><stop offset="1" stop-color="#696962"/></linearGradient>
+        </defs>
+      </svg>
       <!-- Symbol mark (8053:511): 252×252 — rebuilt clean -->
       <div style="position:absolute;left:1003px;top:407px;width:252px;height:252px;overflow:visible;pointer-events:none;">
         <!-- imgGroup143 (8053:581): outer ring + glitch layer, offset by Figma insets -->
@@ -736,9 +827,37 @@
         <img src="images/d07b751d-113f-4475-80b2-dcc9f55ce68e.svg"
              alt="" style="position:absolute;top:0;left:0;width:252px;height:252px;display:block;max-width:none;">
       </div>
+      </div><!-- /#omegaHeroFg -->
 
     </div><!-- /.omega-section__canvas -->
   </section>
+
+  <!-- ============================================================
+       Noise transition (omega→price) — glitch blocks on dark→light gradient
+       ============================================================ -->
+  <div class="noise-exit">
+    <div class="noise-exit__canvas" id="noiseExitCanvas">
+      <!-- Large blocks -->
+      <div style="position:absolute;left:60px;top:80px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:230px;top:10px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:410px;top:130px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:640px;top:30px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:820px;top:110px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:1010px;top:20px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:1200px;top:95px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <div style="position:absolute;left:1370px;top:40px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
+      <!-- Small overlapping blocks -->
+      <div style="position:absolute;left:110px;top:120px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:290px;top:140px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:500px;top:55px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:685px;top:148px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:900px;top:65px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:1080px;top:145px;width:80px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:1265px;top:50px;width:79px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:1440px;top:130px;width:72px;height:85px;background:#102147;"></div>
+      <div style="position:absolute;left:175px;top:35px;width:80px;height:85px;background:#102147;"></div>
+    </div>
+  </div>
 
   <!-- ============================================================
        Price section
@@ -747,73 +866,85 @@
     <div class="price-section__title-bg" aria-hidden="true">Price</div>
 
     <div class="price-section__inner">
-      <h2 class="price-section__title sr">料金</h2>
+      <div class="price-all-grid">
+        <h2 class="price-section__title sr">料金</h2>
 
-      <div class="price-main-box sr d1">
-        <div class="price-grid">
-          <div class="price-grid__item">
-            <p class="price-grid__price-row">
-              <span class="price-grid__label">月額</span>
-              <span class="price-grid__value">1100円</span>
-            </p>
-            <!-- invisible spacer to match badge height on right side -->
-            <span aria-hidden="true" class="price-grid__note" style="visibility:hidden;">placeholder</span>
-          </div>
-          <div class="price-grid__sep"></div>
-          <div class="price-grid__item">
-            <p class="price-grid__price-row">
-              <span class="price-grid__label">年間</span>
-              <span class="price-grid__value">13200円</span>
-            </p>
-            <span class="price-grid__note">0ヶ月分お得</span>
+        <!-- 料金メインボックス（3列スパン） -->
+        <div class="price-main-box sr d1">
+          <div class="price-grid">
+            <div class="price-grid__item">
+              <p class="price-grid__price-row">
+                <span class="price-grid__label">月額</span>
+                <span class="price-grid__value">1100円</span>
+              </p>
+              <span aria-hidden="true" class="price-grid__note" style="visibility:hidden;">placeholder</span>
+            </div>
+            <div class="price-grid__sep"></div>
+            <div class="price-grid__item">
+              <p class="price-grid__price-row">
+                <span class="price-grid__label">年間</span>
+                <span class="price-grid__value">13200円</span>
+              </p>
+              <span class="price-grid__note">0ヶ月分お得</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Additional options -->
-      <p class="price-section__options-title sr d2">追加オプション</p>
+        <!-- 追加オプション見出し（3列スパン） -->
+        <p class="price-section__options-title sr d2">追加オプション</p>
 
-      <div class="price-options-grid">
+        <div class="price-options-grid">
         <!-- USS -->
-        <div class="price-option sr d3">
+        <div class="price-option price-option--usd sr d3">
           <p class="price-option__name">USS</p>
-          <p class="price-option__full">アルティメットセキュアシステム</p>
+          <p class="price-option__full">アルティメット<br>セキュアシステム</p>
           <div class="price-option__sep"></div>
           <p class="price-option__abbr">
             Ultimate<br>
             Secure<br>
             System
           </p>
-          <p class="price-option__price">$1100 USD</p>
+          <div class="price-option__price-block">
+            <p class="price-option__amount">$1100</p>
+            <p class="price-option__currency">🇺🇸 USD</p>
+          </div>
         </div>
 
         <!-- MAX -->
-        <div class="price-option sr d4">
+        <div class="price-option price-option--eur price-option--featured sr d4">
+          <span class="price-option__badge">Most Popular</span>
           <p class="price-option__name">MAX</p>
-          <p class="price-option__full">マキシマムアナライズエクスペリエンス</p>
+          <p class="price-option__full">マキシマム<br>アナライズエクスペリエンス</p>
           <div class="price-option__sep"></div>
           <p class="price-option__abbr">
             Maximum<br>
             Analyze<br>
             Experience
           </p>
-          <p class="price-option__price">$1100 EUR</p>
+          <div class="price-option__price-block">
+            <p class="price-option__amount">$1100</p>
+            <p class="price-option__currency">🇪🇺 EUR</p>
+          </div>
         </div>
 
         <!-- GOD -->
-        <div class="price-option sr d5">
+        <div class="price-option price-option--jpy sr d5">
           <p class="price-option__name">GOD</p>
-          <p class="price-option__full">ジェネレートオブディスティニー</p>
+          <p class="price-option__full">ジェネレート<br>オブディスティニー</p>
           <div class="price-option__sep"></div>
           <p class="price-option__abbr">
             Generate<br>
             Of<br>
             Destiny
           </p>
-          <p class="price-option__price">$1100 JPY</p>
+          <div class="price-option__price-block">
+            <p class="price-option__amount">$1100</p>
+            <p class="price-option__currency">🇯🇵 JPY</p>
+          </div>
         </div>
-      </div>
-    </div>
+        </div><!-- /.price-options-grid -->
+      </div><!-- /.price-all-grid -->
+    </div><!-- /.price-section__inner -->
   </section>
 
   <!-- ============================================================
@@ -873,15 +1004,71 @@
       scaleCanvas('navCanvas',         document.querySelector('.nav'),           71);
       scaleCanvas('heroCanvas',        document.querySelector('.hero'),          786);
       scaleCanvas('newCanvas',         document.querySelector('.new-section'),   562);
-      scaleCanvas('vsCanvas',          document.querySelector('.vs-section'),    620);
-      scaleCanvas('emoCanvas',         document.querySelector('.emo-section'),   648);
-      scaleCanvas('angelCanvas',       document.querySelector('.angel-section'), 682);
+scaleCanvas('vsCanvas',          document.querySelector('.vs-section'),    900);
+      scaleCanvas('emoCanvas',         document.querySelector('.emo-section'),   840);
+      scaleCanvas('angelCanvas',       document.querySelector('.angel-section'), 802);
       scaleCanvas('noiseTopCanvas',    document.querySelector('.noise-top'),     280);
       scaleCanvas('noiseBottomCanvas', document.querySelector('.noise-bottom'),  270);
       scaleCanvas('omegaCanvas',        document.querySelector('.omega-section'), 2650);
+      scaleCanvas('noiseExitCanvas',    document.querySelector('.noise-exit'),    270);
     }
     scaleAllCanvases();
     window.addEventListener('resize', scaleAllCanvases, { passive: true });
+
+    // Omega hero main visual — fade-in on scroll
+    (function() {
+      var heroEls = ['omegaHeroBg', 'omegaHeroFg']
+        .map(function(id) { return document.getElementById(id); })
+        .filter(Boolean);
+      if (!heroEls.length) return;
+      function onScroll() {
+        var section = document.querySelector('.omega-section');
+        if (!section) return;
+        var rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.9) {
+          heroEls.forEach(function(el) { el.classList.add('fade-in'); });
+          window.removeEventListener('scroll', onScroll);
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    // Omega banner — TV power-on on scroll (scroll-only, never on initial load)
+    (function() {
+      const banner = document.getElementById('omegaBanner');
+      if (!banner) return;
+      function onScroll() {
+        const rect = banner.getBoundingClientRect();
+        const viewH = window.innerHeight;
+        // Fire when banner enters the lower 80% of the viewport during scroll
+        if (rect.top < viewH * 0.8 && rect.bottom > 0) {
+          banner.classList.add('tv-on');
+          window.removeEventListener('scroll', onScroll);
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    // Omega subsection cards — TV power-on on scroll
+    (function() {
+      var cards = ['omegaCard1', 'omegaCard2', 'omegaCard3'];
+      var remaining = cards.map(function(id) { return document.getElementById(id); })
+                           .filter(Boolean);
+      if (!remaining.length) return;
+      function onScroll() {
+        var viewH = window.innerHeight;
+        remaining = remaining.filter(function(card) {
+          var rect = card.getBoundingClientRect();
+          if (rect.top < viewH * 0.8 && rect.bottom > 0) {
+            card.classList.add('tv-on');
+            return false; // remove from remaining
+          }
+          return true;
+        });
+        if (!remaining.length) window.removeEventListener('scroll', onScroll);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
 
     // Scroll reveal
     const observer = new IntersectionObserver(
@@ -890,11 +1077,89 @@
     );
     document.querySelectorAll('.sr,.sr-l,.sr-r').forEach(el => observer.observe(el));
 
+    // Directional fade-in helper (VS / EMO / ANGEL)
+    (function() {
+      var sections = [
+        document.querySelector('.vs-section'),
+        document.querySelector('.emo-section'),
+        document.querySelector('.angel-section')
+      ];
+      sections.forEach(function(section) {
+        var items = section.querySelectorAll('.fi-ltr, .fi-rtl');
+        var triggered = false;
+        var obs = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting && !triggered) {
+              triggered = true;
+              items.forEach(function(el) {
+                var delay = parseInt(el.dataset.delay || '0', 10);
+                setTimeout(function() { el.classList.add('in'); }, delay);
+              });
+              obs.disconnect();
+            }
+          });
+        }, { threshold: 0.1 });
+        obs.observe(section);
+      });
+    })();
+
+    // NEW section — staggered fade-in on scroll
+    (function() {
+      var newSection = document.querySelector('.new-section');
+      var newItems = newSection.querySelectorAll('.new-sr');
+      var triggered = false;
+      var newObs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !triggered) {
+            triggered = true;
+            newItems.forEach(function(el) {
+              var delay = parseInt(el.dataset.delay || '0', 10);
+              setTimeout(function() { el.classList.add('in'); }, delay);
+            });
+            newObs.disconnect();
+          }
+        });
+      }, { threshold: 0.15 });
+      newObs.observe(newSection);
+    })();
+
     // Nav scroll shadow
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 20);
     }, { passive: true });
+
+    // System unlock typing animation
+    (function() {
+      const el = document.getElementById('unlockText');
+      if (!el) return;
+      const fullText = el.dataset.text || '';
+      el.textContent = '';
+      let triggered = false;
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting && !triggered) {
+            triggered = true;
+            obs.disconnect();
+            let i = 0;
+            function typeNext() {
+              if (i < fullText.length) {
+                el.textContent = fullText.slice(0, ++i);
+                // Slower on dots, faster on normal chars, tiny randomness for realism
+                var ch = fullText[i - 1];
+                var delay = ch === '.' ? 140 : ch === ' ' ? 80 : 55 + Math.random() * 45;
+                setTimeout(typeNext, delay);
+              } else {
+                el.classList.add('typed'); // dim cursor when done
+              }
+            }
+            // Short pause before starting (terminal boot feel)
+            setTimeout(typeNext, 400);
+          }
+        });
+      }, { threshold: 0.6 });
+      obs.observe(el);
+    })();
 
     // Mobile hamburger menu
     const hamburgerBtn = document.getElementById('hamburgerBtn');

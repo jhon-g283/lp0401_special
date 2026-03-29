@@ -2091,6 +2091,41 @@
         angelUpdateBlocks(0);
       }
 
+      // Angel floater: spawn drifting icon on each creation
+      function spawnAngelFloater() {
+        var $container = $('#angel-floaters');
+        if (!$container.length) {
+          $('body').append('<div id="angel-floaters"></div>');
+          $container = $('#angel-floaters');
+        }
+        var size  = Math.round(80 + Math.random() * 56);
+        var left  = (Math.random() * 85 + 5).toFixed(1);
+        var top   = (Math.random() * 75 + 10).toFixed(1);
+        var dur   = (7 + Math.random() * 7).toFixed(1);
+        var delay = (-Math.random() * parseFloat(dur)).toFixed(1);
+        var rnd   = function() { return Math.round((Math.random() - 0.5) * 90); };
+        var el    = document.createElement('img');
+        el.src    = 'images/angel-icon-square-v2.svg';
+        el.alt    = '';
+        el.setAttribute('aria-hidden', 'true');
+        el.className = 'angel-floater';
+        el.style.left   = left + '%';
+        el.style.top    = top  + '%';
+        el.style.width  = size + 'px';
+        el.style.height = size + 'px';
+        var hue = Math.round(Math.random() * 360);
+        el.style.filter = 'invert(1) sepia(1) saturate(4) hue-rotate(' + hue + 'deg)';
+        el.style.setProperty('--drift-dur',   dur   + 's');
+        el.style.setProperty('--drift-delay', delay + 's');
+        el.style.setProperty('--dx1', rnd() + 'px');
+        el.style.setProperty('--dy1', rnd() + 'px');
+        el.style.setProperty('--dx2', rnd() + 'px');
+        el.style.setProperty('--dy2', rnd() + 'px');
+        el.style.setProperty('--dx3', rnd() + 'px');
+        el.style.setProperty('--dy3', rnd() + 'px');
+        $container[0].appendChild(el);
+      }
+
       $('#angelSubmitBtn').on('click', function() {
         var angelName = $.trim($('#angelName').val()) || '名前未設定';
         var taskVal   = $('#angelTask').val();
@@ -2117,8 +2152,9 @@
             $percent.text('100%');
             angelUpdateBlocks(10);
             $('.angel-loading__icon').addClass('angel-loading__icon--complete');
-            // 1.5秒後に作成完了＋エンジェル情報を表示
+            // 1.5秒後に作成完了＋エンジェル情報を表示＋フローター追加
             setTimeout(function() {
+              spawnAngelFloater();
               $status.text('作成完了！').addClass('angel-loading__status--complete');
               $('#angelCompleteName').text(angelName);
               $('#angelCompleteTask').text(taskLabel);

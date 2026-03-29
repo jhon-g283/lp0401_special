@@ -1441,7 +1441,7 @@
         <!-- View: フォーム -->
         <div id="vmViewForm">
           <!-- セクション見出し -->
-          <div class="vm-section">
+          <div class="vm-section" id="vmIntroSection">
             <div class="vm-heading">
               <span class="vm-heading__corner vm-heading__corner--tl"></span>
               <span class="vm-heading__corner vm-heading__corner--tr"></span>
@@ -1591,7 +1591,7 @@
 
         <!-- Info card -->
         <div class="em-info-card">
-          <p class="em-info-card__heading">EMOとは？</p>
+          <p class="em-info-card__heading">エモーショナルシステムとは？</p>
           <p class="em-info-card__desc">あなたの期待と気持ちに応えるAI。メンタル状況とリンクし、調子のいい時は精度が高く、落ち込んでいる時はAIがあなたを勇気づけます。</p>
         </div>
 
@@ -1902,6 +1902,12 @@
         $('#vmPrompt').val('');
         $('#vmBattleBtn').prop('disabled', true);
         $('#vmBarA, #vmBarB').css('width', '0%');
+        // TV power-on animation
+        var $intro = $('#vmIntroSection');
+        $intro.removeClass('tv-on');
+        requestAnimationFrame(function() {
+          requestAnimationFrame(function() { $intro.addClass('tv-on'); });
+        });
       }
 
       function closeVersusModal() {

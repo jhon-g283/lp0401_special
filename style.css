@@ -253,8 +253,8 @@ img { display: block; max-width: 100%; }
 .btn-blue {
   display: inline-flex; align-items: center; justify-content: center;
   background: var(--blue); color: #fff;
-  font-size: 15px; font-weight: 700; letter-spacing: .03em;
-  padding: 14px 32px; border-radius: 8px; border: none;
+  font-size: 30px; font-weight: 700; letter-spacing: .03em;
+  padding: 28px 64px; border-radius: 14px; border: none;
   cursor: pointer; transition: opacity .2s; text-decoration: none;
 }
 .btn-blue:hover  { opacity: .88; }
@@ -617,7 +617,7 @@ img { display: block; max-width: 100%; }
   overflow: hidden;
 }
 .tenbin-end__text {
-  font-size: clamp(40px,12vw,200px); font-weight: 700;
+  font-size: clamp(20px,6vw,100px); font-weight: 700;
   color: var(--blue); letter-spacing: -.04em; line-height: .9;
   white-space: nowrap;
 }
@@ -1151,7 +1151,7 @@ img { display: block; max-width: 100%; }
   .price-option__meta span { font-size: 12px; }
 
   /* Button touch targets */
-  .btn-blue { min-height: 48px; padding: 14px 24px; font-size: 16px; }
+  .btn-blue { min-height: 80px; padding: 28px 48px; font-size: 28px; }
 
   /* Special / CTA */
   .special-section { padding: 40px 16px; }
@@ -1164,7 +1164,7 @@ img { display: block; max-width: 100%; }
   .tenbin-end { padding: 16px 16px 48px; }
   .tenbin-end__text {
     white-space: normal;
-    font-size: clamp(28px,14vw,72px);
+    font-size: clamp(14px,7vw,36px);
     letter-spacing: -.04em;
     line-height: 1;
   }
@@ -1258,19 +1258,19 @@ img { display: block; max-width: 100%; }
 .feature-demo-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 18px 56px;
+  gap: 20px;
+  padding: 36px 112px;
   background: #2563eb;
   color: #fff;
   font-family: var(--font);
-  font-size: 18px;
+  font-size: 36px;
   font-weight: 700;
   border: none;
-  border-radius: 8px;
+  border-radius: 16px;
   cursor: pointer;
   letter-spacing: 0.04em;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 4px 20px rgba(37,99,235,0.3);
+  box-shadow: 0 8px 40px rgba(37,99,235,0.35);
 }
 
 .feature-demo-btn:hover {
@@ -1402,6 +1402,28 @@ img { display: block; max-width: 100%; }
 .fm-tab:hover:not(.fm-tab--active) {
   background: rgba(250,245,255,0.2);
   color: #6b7280;
+}
+
+/* Shimmer on inactive tabs */
+.fm-tab:not(.fm-tab--active) {
+  background-image: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(200,160,255,0.55) 50%,
+    transparent 60%
+  );
+  background-size: 200% 100%;
+  background-position: 200% center;
+  animation: fm-tab-shimmer 3s ease-in-out infinite;
+}
+
+.fm-tab:not(.fm-tab--active):nth-child(2) { animation-delay: 1s; }
+.fm-tab:not(.fm-tab--active):nth-child(3) { animation-delay: 2s; }
+
+@keyframes fm-tab-shimmer {
+  0%   { background-position: 200% center; }
+  50%  { background-position: -200% center; }
+  100% { background-position: -200% center; }
 }
 
 .fm-tab-icon {
@@ -2216,6 +2238,16 @@ img { display: block; max-width: 100%; }
   display: flex;
   flex-direction: column;
   gap: 14px;
+}
+
+/* TV power-on animation for VS intro section */
+#vmIntroSection {
+  transform-origin: center center;
+  animation: tvPowerOn 0.85s var(--ease) both;
+  animation-play-state: paused;
+}
+#vmIntroSection.tv-on {
+  animation-play-state: running;
 }
 
 /* "バーサスシステムとは" 見出し（コーナーブラケット付き） */

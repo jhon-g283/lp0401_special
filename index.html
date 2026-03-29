@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Pixelify+Sans:wght@700&family=Rubik+Glitch&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 
@@ -587,6 +588,7 @@
   <!-- System unlock bar -->
   <div class="unlock-bar">
     <p class="unlock-bar__text" id="unlockText" data-text="System.... Un Lock !" aria-label="System.... Un Lock !"></p>
+    <p class="unlock-bar__text" id="omegaText" aria-label="OMEGA"></p>
   </div>
 
   <!-- ============================================================
@@ -627,11 +629,18 @@
 
       <!-- ── HERO background (fade-in) ── -->
       <div id="omegaHeroBg" style="position:absolute;inset:0;pointer-events:none;">
-        <!-- Band image (updated) -->
-        <img src="images/9633d592-2497-4144-98cf-b12b25614ec5.png"
-             alt="" aria-hidden="true"
-             style="position:absolute;left:89px;top:83px;width:1335px;height:997px;
-                    object-fit:cover;pointer-events:none;">
+        <!-- Main visual video -->
+        <video
+          autoplay
+          loop
+          muted
+          playsinline
+          preload="auto"
+          aria-hidden="true"
+          style="position:absolute;left:89px;top:83px;width:1335px;height:997px;
+                 object-fit:cover;pointer-events:none;">
+          <source src="images/Cyber_Interface_Animation_Request.mp4" type="video/mp4">
+        </video>
         <!-- Ellipse13 (8053:154): circle behind symbol mark -->
         <img src="images/c4ba9cf7-c42a-45e7-aa15-499339fe29b7.svg"
              alt="" aria-hidden="true"
@@ -1050,6 +1059,15 @@
   </div>
 
   <!-- ============================================================
+       Feature Demo Button
+       ============================================================ -->
+  <div class="feature-demo-section">
+    <button class="feature-demo-btn" id="openFeatureModal">
+      機能を体験する
+    </button>
+  </div>
+
+  <!-- ============================================================
        Footer
        ============================================================ -->
   <footer class="footer">
@@ -1064,6 +1082,208 @@
     </p>
     <p class="footer__copy">© 2025 天秤研究所. All rights reserved.</p>
   </footer>
+
+  <!-- ============================================================
+       Feature Demo Modal
+       ============================================================ -->
+  <div class="fm-overlay" id="featureModal" aria-hidden="true">
+    <div class="fm-modal" role="dialog" aria-modal="true" aria-labelledby="fmTitle">
+
+      <!-- Header -->
+      <div class="fm-header">
+        <span class="fm-title" id="fmTitle">天秤AI 機能体験</span>
+        <button class="fm-close" id="closeFeatureModal" aria-label="閉じる">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M3 3L17 17M17 3L3 17" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="fm-tabs" role="tablist">
+        <button class="fm-tab fm-tab--active" id="tabAngel" role="tab" aria-selected="true" aria-controls="panelAngel" data-tab="angel">
+          <svg class="fm-tab-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <circle cx="9" cy="6" r="3.5" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M2 16c0-3.866 3.134-7 7-7s7 3.134 7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          エンジェル作成機能
+        </button>
+        <button class="fm-tab" id="tabVs" role="tab" aria-selected="false" aria-controls="panelVs" data-tab="vs">
+          <svg class="fm-tab-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4 9h10M9 4v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            <circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+          バーサスシステム
+        </button>
+      </div>
+
+      <!-- Panel: エンジェル作成機能 -->
+      <div class="fm-panel" id="panelAngel" role="tabpanel" aria-labelledby="tabAngel">
+
+        <!-- Info card -->
+        <div class="fm-info-card">
+          <p class="fm-info-card__heading">エンジェルとは？</p>
+          <p class="fm-info-card__sub">エージェントを超えたエージェント機能。一度作成すると、裏側であなたを定期的にサポートします。</p>
+        </div>
+
+        <!-- Form -->
+        <div class="fm-form">
+
+          <!-- エンジェル名 -->
+          <div class="fm-field">
+            <label class="fm-label" for="angelName">エンジェル名</label>
+            <input class="fm-input" type="text" id="angelName" placeholder="エンジェルの名前を入力してください">
+            <div class="fm-input-preview" id="angelNamePreview" aria-live="polite"></div>
+          </div>
+
+          <!-- タスク内容 -->
+          <div class="fm-field">
+            <label class="fm-label" for="angelTask">タスク内容</label>
+            <select class="fm-select" id="angelTask">
+              <option value="">タスクを選択してください</option>
+              <option value="data-recovery">削除データの自動復元</option>
+              <option value="email-assistant">上司の機嫌を考慮したメール作成</option>
+              <option value="spoiler-blocker">ネタバレ防止機能</option>
+              <option value="schedule-optimizer">スケジュール最適化</option>
+            </select>
+          </div>
+
+          <!-- タスク説明 -->
+          <div class="fm-task-notice" id="taskNotice" aria-live="polite">
+            <svg class="fm-task-notice__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2L12.5 7.5H18L13.5 11L15.5 17L10 13.5L4.5 17L6.5 11L2 7.5H7.5L10 2Z" stroke="#2563eb" stroke-width="1.6" stroke-linejoin="round"/>
+            </svg>
+            <span class="fm-task-notice__text" id="taskNoticeText">タスクを選択すると、エンジェルの動作内容が表示されます。</span>
+          </div>
+
+        </div>
+
+        <!-- Submit button -->
+        <button class="fm-submit" type="button">エンジェルを作成</button>
+      </div>
+
+      <!-- Panel: バーサスシステム -->
+      <div class="fm-panel fm-panel--hidden" id="panelVs" role="tabpanel" aria-labelledby="tabVs">
+
+        <!-- View: フォーム -->
+        <div id="vsViewForm">
+          <!-- Info card -->
+          <div class="fm-info-card" style="margin-bottom:24px;">
+            <p class="fm-info-card__heading">バーサスモード</p>
+            <p class="fm-info-card__sub">2つのAIモデルがあなたのプロンプトに対して回答を生成し、その品質を複数の観点から評価して勝者を決定します。</p>
+          </div>
+
+          <!-- モデル選択 -->
+          <div class="fm-field" style="margin-bottom:24px;">
+            <label class="fm-label">対戦するAIモデル</label>
+            <div class="fm-vs-models">
+              <div class="fm-vs-model-card fm-vs-model-card--active">
+                <span class="fm-vs-model-card__emoji">🤖</span>
+                <div>
+                  <p class="fm-vs-model-card__name">GPT-4</p>
+                  <p class="fm-vs-model-card__sub">モデル 1</p>
+                </div>
+              </div>
+              <div class="fm-vs-model-card fm-vs-model-card--active">
+                <span class="fm-vs-model-card__emoji">🧠</span>
+                <div>
+                  <p class="fm-vs-model-card__name">Claude</p>
+                  <p class="fm-vs-model-card__sub">モデル 2</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- プロンプト入力 -->
+          <div class="fm-field" style="margin-bottom:24px;">
+            <label class="fm-label" for="vsPrompt">プロンプトを入力</label>
+            <textarea class="fm-vs-textarea" id="vsPrompt" placeholder="例: 新製品のマーケティング戦略を提案してください"></textarea>
+          </div>
+
+          <!-- バトル開始ボタン -->
+          <button class="fm-vs-battle-btn" id="vsBattleBtn" type="button">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M13 2L4.09 12.11a1 1 0 0 0 .77 1.64H11l-1 8.25L19.91 11.89A1 1 0 0 0 19.14 10.25H13L14 2Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            バトル開始！
+          </button>
+        </div>
+
+        <!-- View: ローディング -->
+        <div id="vsViewLoading" class="fm-vs-loading" style="display:none;">
+          <div class="fm-vs-loading__spinner"></div>
+          <p class="fm-vs-loading__text">AI対決中...</p>
+          <p class="fm-vs-loading__sub">2つのモデルが回答を生成・評価しています</p>
+        </div>
+
+        <!-- View: 結果 -->
+        <div id="vsViewResult" style="display:none;">
+          <!-- モデルカード2列 -->
+          <div class="fm-vs-result-cards">
+            <!-- GPT-4 カード -->
+            <div class="fm-vs-result-card fm-vs-result-card--loser">
+              <div class="fm-vs-result-card__header">
+                <span class="fm-vs-result-card__emoji">🤖</span>
+                <div class="fm-vs-result-card__info">
+                  <p class="fm-vs-result-card__name">GPT-4</p>
+                  <div class="fm-vs-result-card__score-row">
+                    <div class="fm-vs-result-card__bar-wrap">
+                      <div class="fm-vs-result-card__bar fm-vs-result-card__bar--blue" id="vsBarGpt" style="width:0%"></div>
+                    </div>
+                    <span class="fm-vs-result-card__score fm-vs-result-card__score--blue" id="vsScoreGpt">305</span>
+                  </div>
+                </div>
+              </div>
+              <div class="fm-vs-result-card__body">
+                <p>「プロンプト」について詳しく分析しました。</p>
+                <p>&nbsp;</p>
+                <p>ポイント1: データ駆動型のアプローチを採用し、定量的な指標で効果を測定します。</p>
+                <p>&nbsp;</p>
+                <p>ポイント2: ステークホルダーとの密な連携により、プロジェクトの成功率を高めます。</p>
+                <p>&nbsp;</p>
+                <p>ポイント3: 継続的な改善プロセスを導入し、長期的な価値創出を目指します。</p>
+              </div>
+            </div>
+
+            <!-- Claude カード（勝者） -->
+            <div class="fm-vs-result-card fm-vs-result-card--winner">
+              <div class="fm-vs-result-card__header">
+                <span class="fm-vs-result-card__emoji">🧠</span>
+                <div class="fm-vs-result-card__info">
+                  <p class="fm-vs-result-card__name">Claude</p>
+                  <div class="fm-vs-result-card__score-row">
+                    <div class="fm-vs-result-card__bar-wrap">
+                      <div class="fm-vs-result-card__bar fm-vs-result-card__bar--orange" id="vsBarClaude" style="width:0%"></div>
+                    </div>
+                    <span class="fm-vs-result-card__score fm-vs-result-card__score--orange" id="vsScoreClaude">358</span>
+                  </div>
+                </div>
+                <span class="fm-vs-result-card__trophy" aria-label="優勝">🏆</span>
+              </div>
+              <div class="fm-vs-result-card__body">
+                <p>「プロンプト」に関する包括的な分析結果です。</p>
+                <p>&nbsp;</p>
+                <p>重要な観点1: ユーザー体験を最優先に考え、直感的で使いやすいソリューションを提供します。</p>
+                <p>&nbsp;</p>
+                <p>重要な観点2: 市場動向を常に把握し、トレンドに合わせた柔軟な対応を行います。</p>
+                <p>&nbsp;</p>
+                <p>重要な観点3: 持続可能な成長戦略を構築し、長期的な競争優位性を確立します。</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 勝者バナー -->
+          <div class="fm-vs-winner-banner">
+            <p class="fm-vs-winner-banner__title">🎉 Claude の勝利！</p>
+            <p class="fm-vs-winner-banner__score">最終スコア: GPT-4 305 - 358 Claude</p>
+            <button class="fm-vs-retry-btn" id="vsRetryBtn" type="button">もう一度バトル</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
 
   <!-- ============================================================
        Scripts
@@ -1086,7 +1306,7 @@
       scaleCanvas('newCanvas',         document.querySelector('.new-section'),   562);
       scaleCanvas('vsCanvas',          document.querySelector('.vs-section'),    900);
       scaleCanvas('emoCanvas',         document.querySelector('.emo-section'),   840);
-      scaleCanvas('angelCanvas',       document.querySelector('.angel-section'), 802);
+      scaleCanvas('angelCanvas',       document.querySelector('.angel-section'), 802, true);
       scaleCanvas('noiseTopCanvas',    document.querySelector('.noise-top'),     280);
       scaleCanvas('noiseBottomCanvas', document.querySelector('.noise-bottom'),  270);
       scaleCanvas('omegaCanvas',        document.querySelector('.omega-section'), 2650);
@@ -1212,34 +1432,148 @@
     // System unlock typing animation
     (function() {
       const el = document.getElementById('unlockText');
+      const el2 = document.getElementById('omegaText');
       if (!el) return;
       const fullText = el.dataset.text || '';
       el.textContent = '';
+
+      function typeText(target, text, onDone) {
+        let i = 0;
+        function typeNext() {
+          if (i < text.length) {
+            target.textContent = text.slice(0, ++i);
+            var ch = text[i - 1];
+            var delay = ch === '.' ? 140 : ch === ' ' ? 80 : 55 + Math.random() * 45;
+            setTimeout(typeNext, delay);
+          } else {
+            target.classList.add('typed');
+            if (onDone) onDone();
+          }
+        }
+        typeNext();
+      }
+
       let triggered = false;
       const obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
           if (entry.isIntersecting && !triggered) {
             triggered = true;
             obs.disconnect();
-            let i = 0;
-            function typeNext() {
-              if (i < fullText.length) {
-                el.textContent = fullText.slice(0, ++i);
-                // Slower on dots, faster on normal chars, tiny randomness for realism
-                var ch = fullText[i - 1];
-                var delay = ch === '.' ? 140 : ch === ' ' ? 80 : 55 + Math.random() * 45;
-                setTimeout(typeNext, delay);
-              } else {
-                el.classList.add('typed'); // dim cursor when done
-              }
-            }
-            // Short pause before starting (terminal boot feel)
-            setTimeout(typeNext, 400);
+            setTimeout(function() {
+              typeText(el, fullText, function() {
+                if (!el2) return;
+                setTimeout(function() {
+                  typeText(el2, 'OMEGA', null);
+                }, 300);
+              });
+            }, 400);
           }
         });
       }, { threshold: 0.6 });
       obs.observe(el);
     })();
+
+    // ── Feature Demo Modal (jQuery) ──────────────────────────────
+    $(function() {
+      var taskDescriptions = {
+        'data-recovery':      '削除されたデータを自動で検出し、安全に復元します。',
+        'email-assistant':    '上司の感情・状況を読み取り、最適なメール文を生成します。',
+        'spoiler-blocker':    '検索・SNSで話題の作品のネタバレを自動ブロックします。',
+        'schedule-optimizer': '予定を分析し、最適な時間配分を提案します。'
+      };
+
+      // Open modal
+      $('#openFeatureModal').on('click', function() {
+        $('#featureModal').removeClass('fm-overlay--hidden').attr('aria-hidden', 'false');
+        $('body').addClass('fm-body-lock');
+      });
+
+      // Close modal
+      function closeModal() {
+        $('#featureModal').addClass('fm-overlay--hidden').attr('aria-hidden', 'true');
+        $('body').removeClass('fm-body-lock');
+      }
+      $('#closeFeatureModal').on('click', closeModal);
+      $('#featureModal').on('click', function(e) {
+        if ($(e.target).is('#featureModal')) closeModal();
+      });
+      $(document).on('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      // Tab switching
+      $('.fm-tab').on('click', function() {
+        var target = $(this).data('tab');
+        $('.fm-tab').removeClass('fm-tab--active').attr('aria-selected', 'false');
+        $(this).addClass('fm-tab--active').attr('aria-selected', 'true');
+        $('.fm-panel').addClass('fm-panel--hidden');
+        $('#panel' + target.charAt(0).toUpperCase() + target.slice(1)).removeClass('fm-panel--hidden');
+      });
+
+      // エンジェル名 — live preview
+      $('#angelName').on('input', function() {
+        var val = $.trim($(this).val());
+        var $preview = $('#angelNamePreview');
+        if (val) {
+          $preview.text('エンジェル名：' + val).addClass('fm-input-preview--visible');
+        } else {
+          $preview.text('').removeClass('fm-input-preview--visible');
+        }
+      });
+
+      // バトル開始ボタン — プロンプト入力で有効化
+      var $vsBtn = $('#vsBattleBtn');
+      $vsBtn.prop('disabled', true);
+      $('#vsPrompt').on('input', function() {
+        $vsBtn.prop('disabled', $.trim($(this).val()) === '');
+      });
+
+      function vsShowView(view) {
+        $('#vsViewForm, #vsViewLoading, #vsViewResult').hide();
+        $('#vsViewResult').css('display', 'none');
+        if (view === 'form')    { $('#vsViewForm').show(); }
+        if (view === 'loading') { $('#vsViewLoading').show(); }
+        if (view === 'result')  { $('#vsViewResult').show(); }
+      }
+
+      function vsAnimateBar(barId, pct) {
+        setTimeout(function() {
+          $('#' + barId).css('width', pct + '%');
+        }, 100);
+      }
+
+      $vsBtn.on('click', function() {
+        if ($vsBtn.prop('disabled')) return;
+        vsShowView('loading');
+        setTimeout(function() {
+          vsShowView('result');
+          vsAnimateBar('vsBarGpt', 75);
+          vsAnimateBar('vsBarClaude', 88);
+        }, 2000);
+      });
+
+      $('#vsRetryBtn').on('click', function() {
+        $('#vsPrompt').val('');
+        $vsBtn.prop('disabled', true);
+        $('#vsBarGpt, #vsBarClaude').css('width', '0%');
+        vsShowView('form');
+      });
+
+      // タスク内容 — update notice
+      $('#angelTask').on('change', function() {
+        var val = $(this).val();
+        var $notice = $('#taskNotice');
+        var $text   = $('#taskNoticeText');
+        if (val && taskDescriptions[val]) {
+          $text.text(taskDescriptions[val]);
+          $notice.addClass('fm-task-notice--active');
+        } else {
+          $text.text('タスクを選択すると、エンジェルの動作内容が表示されます。');
+          $notice.removeClass('fm-task-notice--active');
+        }
+      });
+    });
+    // ──────────────────────────────────────────────────────────────
 
     // Mobile hamburger menu
     const hamburgerBtn = document.getElementById('hamburgerBtn');

@@ -2466,6 +2466,120 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.05em;
 }
 
+/* =============================================
+   Versus loading — spark & beam FX
+   ============================================= */
+.vm-loading {
+  position: relative;
+}
+
+.vm-fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ---- Beams ---- */
+.vm-beam {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  border-radius: 2px;
+  transform-origin: bottom center;
+  animation: vmBeamPulse 1.6s ease-in-out infinite;
+}
+
+.vm-beam--1  { height: 90px;  background: linear-gradient(to top, transparent, #ff4d00cc); transform: translateX(-50%) rotate(0deg)   translateY(-140px); animation-delay: 0s;    animation-duration: 1.4s; }
+.vm-beam--2  { height: 70px;  background: linear-gradient(to top, transparent, #ffb700cc); transform: translateX(-50%) rotate(45deg)  translateY(-120px); animation-delay: 0.2s;  animation-duration: 1.6s; }
+.vm-beam--3  { height: 100px; background: linear-gradient(to top, transparent, #ff0055cc); transform: translateX(-50%) rotate(90deg)  translateY(-150px); animation-delay: 0.1s;  animation-duration: 1.3s; }
+.vm-beam--4  { height: 75px;  background: linear-gradient(to top, transparent, #00d4ffcc); transform: translateX(-50%) rotate(135deg) translateY(-110px); animation-delay: 0.3s;  animation-duration: 1.7s; }
+.vm-beam--5  { height: 95px;  background: linear-gradient(to top, transparent, #ff4d00cc); transform: translateX(-50%) rotate(180deg) translateY(-145px); animation-delay: 0.05s; animation-duration: 1.5s; }
+.vm-beam--6  { height: 65px;  background: linear-gradient(to top, transparent, #a855f7cc); transform: translateX(-50%) rotate(225deg) translateY(-105px); animation-delay: 0.25s; animation-duration: 1.8s; }
+.vm-beam--7  { height: 85px;  background: linear-gradient(to top, transparent, #ffb700cc); transform: translateX(-50%) rotate(270deg) translateY(-130px); animation-delay: 0.15s; animation-duration: 1.4s; }
+.vm-beam--8  { height: 110px; background: linear-gradient(to top, transparent, #00d4ffcc); transform: translateX(-50%) rotate(315deg) translateY(-160px); animation-delay: 0.35s; animation-duration: 1.6s; }
+
+@keyframes vmBeamPulse {
+  0%, 100% { opacity: 0.15; transform: translateX(-50%) var(--beam-rotate, rotate(0deg)) var(--beam-ty, translateY(-140px)) scaleY(0.6); }
+  50%       { opacity: 0.9;  transform: translateX(-50%) var(--beam-rotate, rotate(0deg)) var(--beam-ty, translateY(-140px)) scaleY(1.2); }
+}
+
+/* Beam rotation override per element */
+.vm-beam--1  { --beam-rotate: rotate(0deg);   --beam-ty: translateY(-140px); }
+.vm-beam--2  { --beam-rotate: rotate(45deg);  --beam-ty: translateY(-120px); }
+.vm-beam--3  { --beam-rotate: rotate(90deg);  --beam-ty: translateY(-150px); }
+.vm-beam--4  { --beam-rotate: rotate(135deg); --beam-ty: translateY(-110px); }
+.vm-beam--5  { --beam-rotate: rotate(180deg); --beam-ty: translateY(-145px); }
+.vm-beam--6  { --beam-rotate: rotate(225deg); --beam-ty: translateY(-105px); }
+.vm-beam--7  { --beam-rotate: rotate(270deg); --beam-ty: translateY(-130px); }
+.vm-beam--8  { --beam-rotate: rotate(315deg); --beam-ty: translateY(-160px); }
+
+/* ---- Sparks ---- */
+.vm-spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: vmSparkFly 1.2s ease-out infinite;
+}
+
+.vm-spark--1  { background: #ff4d00; animation-delay: 0s;    --sx: 110px;  --sy: -80px;  animation-duration: 1.1s; }
+.vm-spark--2  { background: #ffb700; animation-delay: 0.18s; --sx: -90px;  --sy: -110px; animation-duration: 1.3s; width: 8px; height: 8px; }
+.vm-spark--3  { background: #00d4ff; animation-delay: 0.35s; --sx: 70px;   --sy: 100px;  animation-duration: 1.0s; }
+.vm-spark--4  { background: #ff0055; animation-delay: 0.5s;  --sx: -120px; --sy: 60px;   animation-duration: 1.4s; width: 5px; height: 5px; }
+.vm-spark--5  { background: #fff;    animation-delay: 0.07s; --sx: 130px;  --sy: 30px;   animation-duration: 1.2s; width: 4px; height: 4px; }
+.vm-spark--6  { background: #a855f7; animation-delay: 0.42s; --sx: -60px;  --sy: 90px;   animation-duration: 0.9s; width: 7px; height: 7px; }
+.vm-spark--7  { background: #ffb700; animation-delay: 0.6s;  --sx: 80px;   --sy: -130px; animation-duration: 1.3s; }
+.vm-spark--8  { background: #00d4ff; animation-delay: 0.22s; --sx: -100px; --sy: -70px;  animation-duration: 1.1s; width: 5px; height: 5px; }
+.vm-spark--9  { background: #ff4d00; animation-delay: 0.78s; --sx: 50px;   --sy: 120px;  animation-duration: 1.5s; width: 4px; height: 4px; }
+.vm-spark--10 { background: #fff;    animation-delay: 0.14s; --sx: -140px; --sy: -40px;  animation-duration: 1.0s; width: 6px; height: 6px; }
+.vm-spark--11 { background: #ff0055; animation-delay: 0.55s; --sx: 100px;  --sy: 80px;   animation-duration: 1.2s; width: 8px; height: 8px; }
+.vm-spark--12 { background: #a855f7; animation-delay: 0.9s;  --sx: -80px;  --sy: 50px;   animation-duration: 0.95s; width: 5px; height: 5px; }
+
+@keyframes vmSparkFly {
+  0%   { transform: translate(-50%, -50%) translate(0, 0) scale(1);   opacity: 1; }
+  60%  { opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) translate(var(--sx), var(--sy)) scale(0); opacity: 0; }
+}
+
+/* Slow orbit ring that spins behind content */
+.vm-fx::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  margin: -130px 0 0 -130px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  border-top-color: rgba(255, 77, 0, 0.6);
+  border-right-color: rgba(0, 212, 255, 0.4);
+  animation: vmOrbit 2.4s linear infinite;
+}
+
+.vm-fx::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  margin: -100px 0 0 -100px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  border-bottom-color: rgba(168, 85, 247, 0.5);
+  border-left-color: rgba(255, 183, 0, 0.5);
+  animation: vmOrbit 1.8s linear infinite reverse;
+}
+
+@keyframes vmOrbit {
+  to { transform: rotate(360deg); }
+}
+
 /* Result */
 .vm-result-cards {
   display: flex;

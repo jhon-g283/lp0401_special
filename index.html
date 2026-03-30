@@ -1464,6 +1464,29 @@
 
         <!-- View: ローディング -->
         <div id="vmViewLoading" class="vm-loading" style="display:none;">
+          <!-- FX layer -->
+          <div class="vm-fx" aria-hidden="true">
+            <div class="vm-beam vm-beam--1"></div>
+            <div class="vm-beam vm-beam--2"></div>
+            <div class="vm-beam vm-beam--3"></div>
+            <div class="vm-beam vm-beam--4"></div>
+            <div class="vm-beam vm-beam--5"></div>
+            <div class="vm-beam vm-beam--6"></div>
+            <div class="vm-beam vm-beam--7"></div>
+            <div class="vm-beam vm-beam--8"></div>
+            <span class="vm-spark vm-spark--1"></span>
+            <span class="vm-spark vm-spark--2"></span>
+            <span class="vm-spark vm-spark--3"></span>
+            <span class="vm-spark vm-spark--4"></span>
+            <span class="vm-spark vm-spark--5"></span>
+            <span class="vm-spark vm-spark--6"></span>
+            <span class="vm-spark vm-spark--7"></span>
+            <span class="vm-spark vm-spark--8"></span>
+            <span class="vm-spark vm-spark--9"></span>
+            <span class="vm-spark vm-spark--10"></span>
+            <span class="vm-spark vm-spark--11"></span>
+            <span class="vm-spark vm-spark--12"></span>
+          </div>
           <div class="vm-loading__spinner"></div>
           <p class="vm-loading__text">AI対決中...</p>
           <p class="vm-loading__sub">2つのプロンプトが競っています</p>
@@ -1933,7 +1956,7 @@
             $('#vmBarB').css('width', pctB + '%');
           }, 100);
           // 剣アイコンを画面に浮遊させる
-          for (var i = 0; i < 10; i++) {
+          for (var i = 0; i < 2; i++) {
             (function(i) { setTimeout(spawnSwordFloater, i * 100); })(i);
           }
         }, 2200);
@@ -2131,7 +2154,7 @@
           vsAnimateBar('vsBarGpt', pctA);
           vsAnimateBar('vsBarClaude', pctB);
           // 剣アイコンを画面に浮遊させる
-          for (var i = 0; i < 10; i++) {
+          for (var i = 0; i < 2; i++) {
             (function(i) { setTimeout(spawnSwordFloater, i * 100); })(i);
           }
         }, 2000);

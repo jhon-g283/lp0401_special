@@ -454,10 +454,24 @@ img { display: block; max-width: 100%; }
 }
 .price-grid__note {
   display: inline-block;
+  position: relative;
   background: #f59e0b; color: #fff;
   font-size: clamp(12px,1.4vw,18px); font-weight: 700;
   padding: 5px 22px; border-radius: 100px;
   letter-spacing: .04em;
+  overflow: visible;
+}
+
+.note-sparkle {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 20;
+  text-shadow: 0 0 6px currentColor, 0 0 12px currentColor;
+  will-change: transform, opacity;
+  line-height: 1;
+  top: 0;
+  left: 0;
 }
 .price-section__options-title {
   grid-column: 1 / -1;
@@ -1253,6 +1267,23 @@ img { display: block; max-width: 100%; }
   justify-content: center;
   padding: 64px 24px;
   background: #f8f9fa;
+}
+
+.feature-demo-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.btn-sparkle {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  z-index: 10;
+  text-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+  will-change: transform, opacity;
+  line-height: 1;
+  top: 0;
+  left: 0;
 }
 
 .feature-demo-btn {

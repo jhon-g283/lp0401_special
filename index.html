@@ -79,10 +79,10 @@
        ============================================================ -->
   <section class="hero" id="top">
     <div class="hero__canvas" id="heroCanvas">
-      <!-- Background image (8089:6530) — light-ray texture, opacity 0.3 -->
+      <!-- Background video — light-ray texture, opacity 0.3 -->
       <div aria-hidden="true" style="position:absolute;inset:0;opacity:0.3;pointer-events:none;overflow:hidden;z-index:0;">
-        <img src="images/hero-bg.png" alt=""
-             style="position:absolute;left:1.04%;top:-15.55%;width:100%;height:100%;display:block;max-width:none;object-fit:cover;transform:scale(-1,-1);">
+        <video src="images/Futuristic_Flowing_Light_Animation.mp4" autoplay loop muted playsinline
+               style="position:absolute;left:0;top:0;width:100%;height:100%;display:block;object-fit:cover;"></video>
         <div style="position:absolute;inset:0;background:rgba(250,249,255,0.2);"></div>
       </div>
       <!-- HUD / Radar (8089:6184) -->
@@ -350,9 +350,9 @@
         <div class="fi-ltr" data-delay="200"
              style="position:absolute;left:821px;top:252px;width:586px;height:335px;
                     box-sizing:border-box;border:11px solid #fff;border-radius:14px;overflow:hidden;">
-          <img src="images/55da4f47-424f-4c93-b6dc-98bb379e1dbb.png"
-               alt="バーサスシステムイメージ"
-               style="width:100%;height:100%;object-fit:cover;">
+          <video src="images/vs_system.mp4"
+                 autoplay loop muted playsinline
+                 style="width:100%;height:100%;object-fit:cover;"></video>
         </div>
 
         <!-- "VS" large deco text image -->
@@ -374,7 +374,7 @@
         <p class="vs-section__sp-title">生成結果を比べる手間はいらない</p>
         <p class="vs-section__sp-desc">プロンプトで結果を出力後、各生成結果が自らお互いに戦い、自動で最も強く正確な生成結果がピックアップされます。</p>
       </div>
-      <img src="images/55da4f47-424f-4c93-b6dc-98bb379e1dbb.png" alt="バーサスシステムイメージ" class="vs-section__sp-img" style="margin-top:20px;">
+      <video src="images/vs_system.mp4" autoplay loop muted playsinline class="vs-section__sp-img" style="margin-top:20px;"></video>
     </div>
   </section>
 
@@ -445,9 +445,9 @@
       <div class="fi-rtl" data-delay="160"
            style="position:absolute;left:103px;top:254px;width:653px;height:411px;
                   border-radius:8px;border:11px solid #2563eb;overflow:hidden;">
-        <img src="images/emo-main-new.png"
-             alt="EMO機能イメージ"
-             style="width:100%;height:100%;object-fit:cover;">
+        <video src="images/emo_system.mp4"
+               autoplay loop muted playsinline
+               style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
 
     </div><!-- /.emo-section__canvas -->
@@ -456,7 +456,7 @@
     <div class="emo-section__sp">
       <p style="font-size:11px;font-weight:700;color:var(--blue);letter-spacing:2px;margin-bottom:8px;text-align:center;">新機能 - 02</p>
       <p class="sp-badge sp-badge--inv" style="display:block;text-align:center;border-radius:8px;">エモーショナルシステム</p>
-      <img src="images/emo-main-new.png" alt="EMO機能イメージ" class="emo-section__sp-img">
+      <video src="images/emo_system.mp4" autoplay loop muted playsinline class="emo-section__sp-img"></video>
       <img src="images/emo-icon.svg" alt="" class="emo-section__sp-icon">
       <div class="emo-section__sp-card">
         <p class="emo-section__sp-card-title">あなたの期待と気持ちに応えるAI</p>
@@ -538,9 +538,9 @@
       <div class="fi-ltr" data-delay="200"
            style="position:absolute;left:783px;top:328px;width:628px;height:363px;
                   box-sizing:border-box;border:11px solid #fff;border-radius:14px;overflow:hidden;">
-        <img src="images/angel-feature-updated.png"
-             alt="エンジェル機能UI"
-             style="width:100%;height:100%;object-fit:cover;">
+        <video src="images/angel_system.mp4"
+               autoplay loop muted playsinline
+               style="width:100%;height:100%;object-fit:cover;"></video>
       </div>
 
     </div>
@@ -556,14 +556,14 @@
         <p class="angel-section__sp-card-desc">間違って消してしまったデータを感知して復元、上司の機嫌を考慮したメール作成</p>
         <p class="angel-section__sp-card-desc">検索・SNSでの話題のドラマや映画、ゲーム・アニメ作品のネタバレ防止機能など仕事以外でもあなたを見守り続けます。</p>
       </div>
-      <img src="images/angel-feature-updated.png" alt="エンジェル機能UI" class="angel-section__sp-img">
+      <video src="images/angel_system.mp4" autoplay loop muted playsinline class="angel-section__sp-img"></video>
     </div>
   </section>
 
   <!-- ============================================================
        Transition — -AND- / そして
        ============================================================ -->
-  <div class="transition-block">
+  <div class="transition-block" id="and-section">
     <p class="transition-block__and sr">-AND-</p>
     <p class="transition-block__sosite sr d2">そして</p>
   </div>
@@ -575,7 +575,7 @@
   <!-- ============================================================
        Noise transition (top) — 8013:405 blocks on light→dark gradient
        ============================================================ -->
-  <div class="noise-top">
+  <div class="noise-top" id="glitch-section">
     <div class="noise-top__canvas" id="noiseTopCanvas">
       <!-- Large blocks (#102147, opacity:0.9) — tops normalized from Figma y=4028 -->
       <div style="position:absolute;left:28px;top:99px;width:111px;height:119px;background:#102147;opacity:0.9;"></div>
@@ -1002,13 +1002,13 @@
         </div>
 
         <!-- 追加オプション見出し（3列スパン） -->
-        <p class="price-section__options-title sr d2">追加オプション</p>
+        <p class="price-section__options-title sr d2" id="price-options">追加オプション</p>
 
         <div class="price-options-grid">
         <!-- USS -->
         <div class="price-option price-option--usd sr d3">
-          <p class="price-option__name">USS</p>
-          <p class="price-option__full">アルティメット<br>セキュアシステム</p>
+          <p class="price-option__name">USO</p>
+          <p class="price-option__full">アルティメット<br>セキュアオペレート</p>
           <div class="price-option__sep"></div>
           <p class="price-option__abbr">
             Ultimate<br>
@@ -1105,9 +1105,11 @@
        Feature Demo Button
        ============================================================ -->
   <div class="feature-demo-section">
-    <button class="feature-demo-btn" id="openFeatureModal">
-      機能を体験する
-    </button>
+    <div class="feature-demo-wrapper">
+      <button class="feature-demo-btn" id="openFeatureModal">
+        機能を体験する
+      </button>
+    </div>
   </div>
 
   <!-- ============================================================
@@ -2343,6 +2345,248 @@
         });
       });
     }
+
+    // Arrow Down / A key → scroll to next section (demo)
+    (function() {
+      // id: セクションIDで scrollIntoView
+      // canvasId + canvasY: スケール済みカンバス内の Y 座標（px）からスクロール量を計算
+      var stops = [
+        { id: 'top' },
+        { id: 'new-section' },
+        { id: 'vs' },
+        { id: 'emo' },
+        { id: 'angel' },
+        { id: 'and-section' },
+        { id: 'glitch-section' },
+        { id: 'omega' },
+        { canvasId: 'omega', canvasY: 350  }, // OMEGA文字・アイコン
+        { canvasId: 'omega', canvasY: 1150 }, // カード1: インフィニットジェネレーション
+        { canvasId: 'omega', canvasY: 1650 }, // カード2
+        { canvasId: 'omega', canvasY: 2040 }, // カード3
+        { id: 'price' },
+        { id: 'price-options' }, // 追加オプション
+        { id: 'contact' },
+      ];
+      var currentIndex = 0;
+      var locked = false;
+
+      function scrollToStop(stop) {
+        if (stop.id) {
+          var el = document.getElementById(stop.id);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else if (stop.canvasId) {
+          var section = document.getElementById(stop.canvasId);
+          if (!section) return;
+          var scale = document.documentElement.clientWidth / 1512;
+          var sectionTop = section.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: sectionTop + stop.canvasY * scale, behavior: 'smooth' });
+        }
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key !== 'ArrowDown' && e.key !== 'a' && e.key !== 'A') return;
+        if (locked) return;
+        if (currentIndex >= stops.length - 1) return;
+
+        currentIndex++;
+        locked = true;
+        scrollToStop(stops[currentIndex]);
+        setTimeout(function() { locked = false; }, 1200);
+      });
+    })();
+
+    // ============================================================
+    // Sparkle effect for "0ヶ月分お得" badge (always on)
+    // ============================================================
+    (function() {
+      var badge = document.querySelector('.price-grid__note:not([aria-hidden])');
+      if (!badge || badge.style.visibility === 'hidden') {
+        badge = document.querySelector('.price-grid__note:not([style*="hidden"])');
+      }
+      if (!badge) return;
+
+      var COLORS = ['#fbbf24', '#ffffff', '#fde68a', '#fcd34d', '#fff7ed', '#fed7aa'];
+      var CHARS  = ['✦', '✧', '✸', '✺', '★', '✵'];
+
+      var sparkles   = [];
+      var spawnTimer = 0;
+      var spawnAngle = 0;
+
+      function createNoteSparkle(startAngle) {
+        var rect  = badge.getBoundingClientRect();
+        var rx    = rect.width  / 2 + 14;
+        var ry    = rect.height / 2 + 14;
+        var cx    = rect.width  / 2;
+        var cy    = rect.height / 2;
+        var fontSize = Math.random() * 7 + 5;
+
+        var el = document.createElement('span');
+        el.className   = 'note-sparkle';
+        el.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
+        el.style.color    = COLORS[Math.floor(Math.random() * COLORS.length)];
+        el.style.fontSize = fontSize + 'px';
+        badge.appendChild(el);
+
+        sparkles.push({
+          el:         el,
+          halfSize:   fontSize / 2,
+          life:       0,
+          maxLife:    Math.round(Math.random() * 35 + 40),
+          orbitAngle: startAngle,
+          speed:      (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 2 + 1),
+          rx: rx, ry: ry, cx: cx, cy: cy
+        });
+      }
+
+      function noteSparkleLoop() {
+        var toRemove = [];
+
+        for (var i = 0; i < sparkles.length; i++) {
+          var s = sparkles[i];
+          s.life++;
+          s.orbitAngle += s.speed;
+
+          var rad      = s.orbitAngle * Math.PI / 180;
+          var px       = s.cx + Math.cos(rad) * s.rx - s.halfSize;
+          var py       = s.cy + Math.sin(rad) * s.ry - s.halfSize;
+          var progress = s.life / s.maxLife;
+          var opacity  = progress < 0.2 ? progress / 0.2
+                       : progress > 0.75 ? (1 - progress) / 0.25
+                       : 1;
+          var scale    = 0.3 + Math.sin(progress * Math.PI) * 1.1;
+
+          s.el.style.transform = 'translate(' + px + 'px,' + py + 'px) scale(' + scale + ')';
+          s.el.style.opacity   = opacity;
+
+          if (s.life >= s.maxLife) {
+            s.el.remove();
+            toRemove.push(i);
+          }
+        }
+
+        for (var j = toRemove.length - 1; j >= 0; j--) {
+          sparkles.splice(toRemove[j], 1);
+        }
+
+        spawnTimer++;
+        if (spawnTimer >= 12) {
+          createNoteSparkle(spawnAngle);
+          spawnAngle = (spawnAngle + 67) % 360;
+          spawnTimer = 0;
+        }
+
+        requestAnimationFrame(noteSparkleLoop);
+      }
+
+      // 初期バースト
+      for (var i = 0; i < 6; i++) createNoteSparkle(i * 60);
+      requestAnimationFrame(noteSparkleLoop);
+    })();
+
+    // ============================================================
+    // Sparkle orbit effect for feature-demo-btn
+    // ============================================================
+    (function() {
+      var btn = document.getElementById('openFeatureModal');
+      var wrapper = btn ? btn.closest('.feature-demo-wrapper') : null;
+      if (!btn || !wrapper) return;
+
+      var COLORS = ['#fbbf24', '#ffffff', '#93c5fd', '#fde68a', '#f9a8d4', '#a5f3fc'];
+      var CHARS  = ['✦', '✧', '★', '✸', '✺', '✵'];
+
+      var sparkles    = [];
+      var raf         = null;
+      var isHovered   = false;
+      var spawnTimer  = 0;
+      var spawnAngle  = 0;
+
+      function createSparkle(startAngle) {
+        var rect    = btn.getBoundingClientRect();
+        var wRect   = wrapper.getBoundingClientRect();
+        var rx      = rect.width  / 2 + 30;
+        var ry      = rect.height / 2 + 30;
+        var fontSize = Math.random() * 10 + 8;
+
+        var el = document.createElement('span');
+        el.className   = 'btn-sparkle';
+        el.textContent = CHARS[Math.floor(Math.random() * CHARS.length)];
+        el.style.color    = COLORS[Math.floor(Math.random() * COLORS.length)];
+        el.style.fontSize = fontSize + 'px';
+        wrapper.appendChild(el);
+
+        sparkles.push({
+          el:          el,
+          halfSize:    fontSize / 2,
+          life:        0,
+          maxLife:     Math.round(Math.random() * 45 + 50),
+          orbitAngle:  startAngle,
+          speed:       (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 1.5 + 0.8),
+          rx:          rx,
+          ry:          ry,
+          cx:          rect.left - wRect.left + rect.width  / 2,
+          cy:          rect.top  - wRect.top  + rect.height / 2
+        });
+      }
+
+      function tick() {
+        var toRemove = [];
+
+        for (var i = 0; i < sparkles.length; i++) {
+          var s = sparkles[i];
+          s.life++;
+          s.orbitAngle += s.speed;
+
+          var rad      = s.orbitAngle * Math.PI / 180;
+          var px       = s.cx + Math.cos(rad) * s.rx - s.halfSize;
+          var py       = s.cy + Math.sin(rad) * s.ry - s.halfSize;
+          var progress = s.life / s.maxLife;
+          var opacity  = progress < 0.2 ? progress / 0.2
+                       : progress > 0.75 ? (1 - progress) / 0.25
+                       : 1;
+          var scale    = 0.4 + Math.sin(progress * Math.PI) * 0.9;
+
+          s.el.style.transform = 'translate(' + px + 'px,' + py + 'px) scale(' + scale + ')';
+          s.el.style.opacity   = opacity;
+
+          if (s.life >= s.maxLife) {
+            s.el.remove();
+            toRemove.push(i);
+          }
+        }
+
+        for (var j = toRemove.length - 1; j >= 0; j--) {
+          sparkles.splice(toRemove[j], 1);
+        }
+
+        if (isHovered) {
+          spawnTimer++;
+          if (spawnTimer >= 7) {
+            createSparkle(spawnAngle);
+            spawnAngle  = (spawnAngle + 53) % 360;
+            spawnTimer  = 0;
+          }
+        }
+
+        if (isHovered || sparkles.length > 0) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          raf = null;
+        }
+      }
+
+      btn.addEventListener('mouseenter', function() {
+        isHovered = true;
+        // 初期バースト
+        for (var i = 0; i < 8; i++) {
+          createSparkle(i * 45);
+        }
+        if (!raf) raf = requestAnimationFrame(tick);
+      });
+
+      btn.addEventListener('mouseleave', function() {
+        isHovered = false;
+      });
+    })();
   </script>
 </body>
 </html>
